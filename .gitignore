@@ -1,0 +1,12 @@
+civico/__pycache__/__init__.cpython-39.pyc
+civico/__pycache__/admin.cpython-39.pyc
+civico/__pycache__/apps.cpython-39.pyc
+civico/__pycache__/models.cpython-39.pyc
+civico/__pycache__/urls.cpython-39.pyc
+civico/__pycache__/views.cpython-39.pyc
+civico/migrations/__init__.py
+civico/migrations/__pycache__/__init__.cpython-39.pyc
+civicodental/__pycache__/__init__.cpython-39.pyc
+civicodental/__pycache__/settings.cpython-39.pyc
+civicodental/__pycache__/urls.cpython-39.pyc
+civicodental/__pycache__/wsgi.cpython-39.pyc
