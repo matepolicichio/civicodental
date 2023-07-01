@@ -1,11 +1,17 @@
 header{
-    background-color: rgba(52, 59, 64, 0.9);
+    /* background-color: rgba(52, 59, 64, 0.9); */
+    background-color: #32869e;
 }
+
+/* body{
+    background-color:#cbd4d9;
+    background-color:#a6ccd5;
+} */
 
 .portada {
     background-color: black;
     height: 100vh;
-    background-image: url(./img/portada.jpg);
+    background-image: url(./img/civico_27.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
