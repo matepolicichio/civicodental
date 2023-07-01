@@ -1,0 +1,18 @@
+header{
+    background-color: rgba(52, 59, 64, 0.9);
+}
+
+.portada {
+    background-color: black;
+    height: 100vh;
+    background-image: url(./img/portada.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}

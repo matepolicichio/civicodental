@@ -1,0 +1,104 @@
+pip install Django
+python -m django --version
+
+django-admin startproject <nombre_del_proyecto>
+python manage.py startapp <nombre_de_la_aplicacion>
+---------------------------------
+INSTALLED_APPS = [
+'<nombre_de_la_aplicacion>.apps.PagesConfig',
+'django.contrib.admin',
+# more apps
+]
+----------------------------
+Create urls.py inside your app:
+from django.urls import path
+from . import views
+
+app_name = '<nombre_de_la_aplicacion>'
+urlpatterns = [
+    path('', views.index, name='index'),
+]
+-------------------------
+Add URL to urlpatterns:
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('polls/', include('polls.urls')),
+    path('appdoku/', include('appdoku.urls')),
+    path('AntoTeEntrena/', include('anto.urls')),
+]
+
+--------------------------------------------
+All about static files:
+Create the /static directory: In your Django project's root directory (the same directory that contains the manage.py file)
+
+Configure static files in Django settings: Open your Django project's settings.py file and make sure that the necessary settings
+related to static files are configured correctly:
+
+Ensure that django.contrib.staticfiles is included in the INSTALLED_APPS list.
+Set the STATIC_URL setting to specify the URL prefix for static files. By default, it is usually set to '/static/'.
+Optionally, set the STATIC_ROOT setting to specify the directory where collected static files should be stored when
+running the collectstatic management command (typically used in production).
+
+The {% static %} template tag is used to generate the correct URL for the static file
+based on the STATIC_URL setting in your Django project's settings file.
+
+INSTALLED_APPS = [
+    # ...
+    'django.contrib.staticfiles',
+]
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+python manage.py collectstatic
+This command will gather all static files from your apps and move them to the STATIC_ROOT directory specified in your settings.
+It is typically used when deploying your project to a production environment.
+
+
+---------------------------
+
+Databases:
+python manage.py migrate
+python manage.py makemigrations <app_name>
+python manage.py sqlmigrate polls 0001
+python manage.py migrate
+
+python manage.py createsuperuser
+http://127.0.0.1:8000/admin/
+
+
+editar admin.py en la <app>
+from django.contrib import admin
+from .models import Question
+admin.site.register(Question)
+
+python manage.py runserver
+python manage.py shell
+
+
+
+
+# .gitignore --------------------------
+
+# Exclude pycache directories
+__pycache__/
+
+# Exclude user-specific settings
+**/settings_local.py
+**/local_settings.py
+
+# Exclude IDE-specific files
+.idea/
+.vscode/
+
+# Exclude temporary or cache files
+*.log
+*.session
+*.pyc
+*.pyo
+db.sqlite3
+/static/
+/media/
