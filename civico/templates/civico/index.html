@@ -17,9 +17,9 @@
     <header class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container">
             <div class="d-flex justify-content-around align-items-center fs-2 fw-bold">
-                <i class="bi bi-brightness-alt-high fs-1 text-white"></i>
-                <!-- <img src="{% static 'polls/img/bootstrap-logo.svg' %}" alt="Logo" width="30"
-                class="d-inline-block align-text-bottom"> -->
+                <!-- <i class="bi bi-brightness-alt-high fs-1 text-white"></i> -->
+                <img src="{% static 'civico/img/logo_blanco.svg' %}" alt="Logo" width="50"
+                class="d-inline-block align-text-center ms-1">
                 <a class="navbar-brand ms-1" href="#">Civico Dental Care</a>
             </div>
 
@@ -40,19 +40,20 @@
     </header>
 
     <main>
-
+        {% block contenido %}
         <section class="container portada">
             <div class="row align-items-center mt-5 p-3">
 
-                <div class="col-12 d-flex flex-column p-3">
-                    <h1 class="text-center text-md-start fw-bold display-5 mb-3">Clinica Odontologica Centro Civico</h1>
+                <div class="col-12 d-flex flex-column p-3 text-white">
+                    <h1 class="text-center fw-bold display-5 mb-3">Clinica Odontologica Centro Civico</h1>
 
-                    <p class="text-center text-md-start"><strong>strong</strong>Lorem ipsum dolor sit amet consectetur
+                    <p class="text-center"><strong>strong</strong>Lorem ipsum dolor sit amet consectetur
                         adipisicing elit. Harum mollitia quisquam, blanditiis vero repellat dignissimos? Adipisci itaque
                         recusandae porro error quasi. Dicta eveniet laborum, ea ad laudantium libero fugiat inventore.
                     </p>
-
-                    <button type="button" class="btn btn-dark">Promociones</button>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-dark">Promociones</button>
+                    </div>
                 </div>
         </section>
 
@@ -73,8 +74,7 @@
                 </div>
             </h2>
         </section>
-
-
+        {% endblock %}
     </main>
 
     <footer>
