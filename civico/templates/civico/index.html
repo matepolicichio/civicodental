@@ -18,9 +18,9 @@
         <div class="container">
             <div class="d-flex justify-content-around align-items-center fs-2 fw-bold">
                 <!-- <i class="bi bi-brightness-alt-high fs-1 text-white"></i> -->
-                <img src="{% static 'civico/img/logo_blanco.svg' %}" alt="Logo" width="50"
+                <img src="{% static 'civico/img/logo_blanco.svg' %}" alt="Logo" width="60"
                 class="d-inline-block align-text-center ms-1">
-                <a class="navbar-brand ms-1" href="#">Civico Dental Care</a>
+                <a class="navbar-brand ms-1" href="{% url 'civico:index' %}">Civico Dental Care</a>
             </div>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -29,11 +29,11 @@
             </button>
             <nav class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                    <a class="nav-link" href="#">Servicios</a>
-                    <a class="nav-link" href="#">Promociones</a>
-                    <a class="nav-link" href="#">Nosotros</a>
-                    <a class="nav-link disabled">Contacto</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'civico:index' %}">Inicio</a>
+                    <a class="nav-link" href="{% url 'civico:servicios' %}">Servicios</a>
+                    <a class="nav-link" href="{% url 'civico:promociones' %}">Promociones</a>
+                    <a class="nav-link" href="{% url 'civico:nosotros' %}">Nosotros</a>
+                    <a class="nav-link" href="/contacto/">Contacto</a>
                 </div>
             </nav>
         </div>
