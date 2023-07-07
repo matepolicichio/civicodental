@@ -1,10 +1,17 @@
+
+:root {
+  --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-primary: "Montserrat", sans-serif;
+  --font-secondary: "Lato", sans-serif;
+}
+
 /* Global Colors */
 :root {
     --color-default: #212529;
     --color-default-rgb: 33, 37, 41;
     --color-background: #ffffff;
     --color-background-rgb: 255, 255, 255;
-    --color-primary: #e84545;
+    --color-primary: #32869e;
     --color-primary-rgb: 232, 69, 69;
     --color-secondary: #32353a;
     --color-secondary-rgb: 50, 53, 58;
@@ -45,6 +52,42 @@ header{
     justify-content: center;
     align-items: center; */
 
+}
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  color: var(--color-default);
+  background-color: var(--color-background);
+  font-family: var(--font-default);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: rgba(var(--color-primary-rgb), 0.7);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary);
+}
+
+section {
+  color: var(--color-default);
+  background-color: var(--color-background);
+  padding: 60px 0;
+  overflow: clip;
 }
 
 /* Seccion Portada Homepage */
@@ -139,4 +182,80 @@ header{
       font-size: 18px;
     }
   }
+
+/* Services Section - Home Page
+------------------------------*/
+.services .service-item {
+  position: relative;
+  padding-top: 40px;
+}
+
+.services .service-item:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(var(--color-default-rgb), 0.1);
+}
+
+.services .service-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--color-primary);
+  border-right: 5px solid var(--color-background);
+}
+
+.services .service-item .icon {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  margin-right: 50px;
+  line-height: 0;
+}
+
+.services .service-item .icon i {
+  color: rgba(var(--color-default-rgb), 0.7);
+  font-size: 56px;
+  transition: ease-in-out 0.3s;
+  z-index: 2;
+  position: relative;
+}
+
+.services .service-item .icon:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  background: rgba(var(--color-primary-rgb), 0.3);
+  border-radius: 50px;
+  z-index: 1;
+  bottom: -15px;
+  right: -15px;
+  transition: 0.3s;
+}
+
+.services .service-item .title {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.services .service-item .title a {
+  color: var(--color-secondary);
+}
+
+.services .service-item .title a:hover {
+  color: var(--color-primary);
+}
+
+.services .service-item .description {
+  line-height: 24px;
+  font-size: 14px;
+}
 

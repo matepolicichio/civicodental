@@ -6,6 +6,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -19,7 +28,7 @@
             <div class="d-flex justify-content-around align-items-center fs-2 fw-bold">
                 <!-- <i class="bi bi-brightness-alt-high fs-1 text-white"></i> -->
                 <img src="{% static 'civico/img/logo_blanco.svg' %}" alt="Logo" width="60"
-                class="d-inline-block align-text-center ms-1">
+                    class="d-inline-block align-text-center ms-1">
                 <a class="navbar-brand ms-1" href="{% url 'civico:index' %}">Civico Dental Care</a>
             </div>
 
@@ -30,7 +39,7 @@
             <nav class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="{% url 'civico:index' %}">Inicio</a>
-                    <a class="nav-link" href="{% url 'civico:servicios' %}">Servicios</a>
+                    <a class="nav-link" href="#services">Servicios</a>
                     <a class="nav-link" href="{% url 'civico:promociones' %}">Promociones</a>
                     <a class="nav-link" href="{% url 'civico:nosotros' %}">Nosotros</a>
                     <a class="nav-link" href="/contacto/">Contacto</a>
@@ -44,25 +53,228 @@
         <section id="hero" class="hero">
 
             <img src="../../static/civico/img/civico_27.JPG" alt="" data-aos="fade-in">
-      
+
             <div class="container">
-              <div class="row">
-                <div class="col-lg-10">
-                  <h2 data-aos="fade-up" data-aos-delay="100">Clinica Odontologica Centro Civico</h2>
-                  <p data-aos="fade-up" data-aos-delay="200">Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Harum mollitia quisquam, blanditiis vero repellat dignissimos? Adipisci itaque
-                    recusandae porro error quasi. Dicta eveniet laborum, ea ad laudantium libero fugiat inventore.</p>
+                <div class="row">
+                    <div class="col-lg-10">
+                        <h2 data-aos="fade-up" data-aos-delay="100">Clinica Odontologica Centro Civico</h2>
+                        <p data-aos="fade-up" data-aos-delay="200">Lorem ipsum dolor sit amet consectetur
+                            adipisicing elit. Harum mollitia quisquam, blanditiis vero repellat dignissimos? Adipisci
+                            itaque
+                            recusandae porro error quasi. Dicta eveniet laborum, ea ad laudantium libero fugiat
+                            inventore.</p>
+                    </div>
+                    <div class="col-lg-5">
+                        <form action="#" class="sign-up-form d-flex" data-aos="fade-up" data-aos-delay="300">
+                            <input type="text" class="form-control" placeholder="Enter email address">
+                            <input type="submit" class="btn btn-primary" value="Sign up">
+                        </form>
+                    </div>
                 </div>
-                <div class="col-lg-5">
-                  <form action="#" class="sign-up-form d-flex" data-aos="fade-up" data-aos-delay="300">
-                    <input type="text" class="form-control" placeholder="Enter email address">
-                    <input type="submit" class="btn btn-primary" value="Sign up">
-                  </form>
-                </div>
-              </div>
             </div>
-      
-          </section>
+
+        </section>
+
+        <!-- Services Section - Home Page -->
+        <section id="services" class="services">
+
+            <!--  Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Servicios</h2>
+                <p>En nuestra clínica, nos enorgullece brindar una atención dental de alta calidad y personalizada.
+                    Nuestro objetivo es mejorar la salud bucal y la confianza de nuestros pacientes a través de una
+                    amplia gama de servicios odontológicos.
+                </p>
+            </div><!-- End Section Title -->
+
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-item d-flex">
+                            <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
+                            <div>
+                                <h4 class="title"><a href="services-details.html" class="stretched-link">Restauraciones
+                                        Dentales</a>
+                                </h4>
+                                <p class="description">Nuestro equipo de expertos en odontología restauradora se dedica
+                                    a reparar dientes dañados o decayentes. Utilizamos materiales de alta calidad para
+                                    restaurar la función y la apariencia de los dientes afectados, ya sea mediante
+                                    obturaciones (empastes) de composite o porcelana, incrustaciones o coronas dentales.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Service Item -->
+
+                    <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-item d-flex">
+                            <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
+                            <div>
+                                <h4 class="title"><a href="services-details.html" class="stretched-link">Limpieza
+                                        Dental</a></h4>
+                                <p class="description">Nuestro servicio de limpieza dental está diseñado para mantener
+                                    tu boca sana y libre de enfermedades periodontales. Nuestros higienistas dentales
+                                    realizarán una limpieza profunda, eliminando la placa y el sarro acumulados, además
+                                    de proporcionarte consejos de higiene oral personalizados para mantener una sonrisa
+                                    radiante.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-item d-flex">
+                            <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
+                            <div>
+                                <h4 class="title"><a href="services-details.html" class="stretched-link">Implantes
+                                        Dentales</a></h4>
+                                <p class="description">Si has perdido uno o varios dientes, nuestros especialistas en
+                                    implantes dentales pueden ayudarte a recuperar tu sonrisa completa y funcional. Los
+                                    implantes dentales son raíces artificiales de titanio que se integran de forma
+                                    segura en el hueso de la mandíbula, brindando una base sólida para la colocación de
+                                    coronas o puentes dentales.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="400">
+                        <div class="service-item d-flex">
+                            <div class="icon flex-shrink-0"><i class="bi bi-binoculars"></i></div>
+                            <div>
+                                <h4 class="title"><a href="services-details.html" class="stretched-link">Alineadores
+                                        Invisibles</a></h4>
+                                <p class="description">Nuestro tratamiento con alineadores invisibles es una alternativa
+                                    estética a los tradicionales brackets metálicos. Utilizamos tecnología de vanguardia
+                                    para crear alineadores personalizados y transparentes que gradualmente corrigen la
+                                    posición de tus dientes. Disfrutarás de una sonrisa más recta sin comprometer tu
+                                    apariencia durante el proceso.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="500">
+                        <div class="service-item d-flex">
+                            <div class="icon flex-shrink-0"><i class="bi bi-brightness-high"></i></div>
+                            <div>
+                                <h4 class="title"><a href="services-details.html" class="stretched-link">Carillas
+                                        Dentales</a>
+                                </h4>
+                                <p class="description">Si deseas una sonrisa más blanca y brillante, ofrecemos
+                                    tratamientos de blanqueamiento dental seguros y efectivos. Ya sea en el consultorio
+                                    o mediante el uso de kits de blanqueamiento casero, nuestros profesionales te
+                                    ayudarán a eliminar las manchas y a aclarar el tono de tus dientes, proporcionándote
+                                    resultados notables y duraderos.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="600">
+                        <div class="service-item d-flex">
+                            <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week"></i></div>
+                            <div>
+                                <h4 class="title"><a href="services-details.html"
+                                        class="stretched-link">Blanqueamientos</a></h4>
+                                <p class="description">Si deseas una sonrisa más blanca y brillante, ofrecemos
+                                    tratamientos de blanqueamiento dental seguros y efectivos. Ya sea en el consultorio
+                                    o mediante el uso de kits de blanqueamiento casero, nuestros profesionales te
+                                    ayudarán a eliminar las manchas y a aclarar el tono de tus dientes, proporcionándote
+                                    resultados notables y duraderos.</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                </div>
+
+            </div>
+
+        </section><!-- End Services Section -->
+
+        <!-- Promotions Section - Home Page -->
+        <section id="promociones" class="services">
+
+            <!--  Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Promociones</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci corporis qui deserunt, harum omnis
+                    natus impedit eligendi hic suscipit reprehenderit perferendis officiis nostrum iure et totam illo
+                    numquam assumenda rem.
+                </p>
+            </div><!-- End Section Title -->
+
+            <div class="container">
+
+                <div class="row gy-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-item d-flex">
+                            <div class="card">
+                                <img src="../../static/civico/img/promocion1.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Carillas Dentales</h5>
+                                    <p class="card-text">Venners o carillas de porcelana</p>
+                                    <a href="#" class="btn btn-primary">Ver mas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-item d-flex">
+                            <div class="card">
+                                <img src="../../static/civico/img/promocion2.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Limpieza Dental</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Ver mas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-item d-flex">
+                            <div class="card">
+                                <img src="../../static/civico/img/promocion3.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Beneficios</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Ver mas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-item d-flex">
+                            <div class="card">
+                                <img src="../../static/civico/img/promocion4.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Promocion</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Ver mas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-item d-flex">
+                            <div class="card">
+                                <img src="../../static/civico/img/promocion5.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Implantes Dentales</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Ver mas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section><!-- End Promotion Section -->
+
 
         <section class="container portada">
             <div class="row align-items-center mt-5 p-3">
