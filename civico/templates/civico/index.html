@@ -23,30 +23,33 @@
 </head>
 
 <body>
-    <header class="navbar navbar-expand-md navbar-dark fixed-top">
-        <div class="container">
-            <div class="d-flex justify-content-around align-items-center fs-2 fw-bold">
-                <!-- <i class="bi bi-brightness-alt-high fs-1 text-white"></i> -->
-                <img src="{% static 'civico/img/logo_blanco.svg' %}" alt="Logo" width="60"
-                    class="d-inline-block align-text-center ms-1">
-                <a class="navbar-brand ms-1" href="{% url 'civico:index' %}">Civico Dental Care</a>
-            </div>
+    <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <nav class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="{% url 'civico:index' %}">Inicio</a>
-                    <a class="nav-link" href="#services">Servicios</a>
-                    <a class="nav-link" href="{% url 'civico:promociones' %}">Promociones</a>
-                    <a class="nav-link" href="{% url 'civico:nosotros' %}">Nosotros</a>
-                    <a class="nav-link" href="/contacto/">Contacto</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+      <a href="/proton/" class="logo d-flex align-items-center me-auto me-xl-0">
+        <img src="{% static 'civico/img/logo_blanco.svg' %}" alt="Logo" width="60" class="d-inline-block align-text-center ms-1">
+        <h1>Civico Dental Care</h1>
+      </a>
+
+      <!-- Nav Menu -->
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Inicio</a></li>
+          <li><a href="#services">Servicios</a></li>
+          <li><a href="#promociones">Promociones</a></li>
+          <li><a href="#about">Nosotros</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav><!-- End Nav Menu -->
+
+      <a class="btn-getstarted" href="#about">Comenzar</a>
+
+    </div>
+  </header><!-- End Header -->
+
 
     <main>
         {% block contenido %}
@@ -57,7 +60,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10">
-                        <h2 data-aos="fade-up" data-aos-delay="100">Clinica Odontologica Centro Civico</h2>
+                        <h2 data-aos="fade-up" data-aos-delay="100">Clínica Odontológica Centro Cívico</h2>
                         <p data-aos="fade-up" data-aos-delay="200">Lorem ipsum dolor sit amet consectetur
                             adipisicing elit. Harum mollitia quisquam, blanditiis vero repellat dignissimos? Adipisci
                             itaque
@@ -93,9 +96,9 @@
 
                     <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="100">
                         <div class="service-item d-flex">
-                            <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
+                            <div class="icon flex-shrink-0"><i class="bi bi-clipboard-minus"></i></div>
                             <div>
-                                <h4 class="title"><a href="services-details.html" class="stretched-link">Restauraciones
+                                <h4 class="title"><a href="#" class="stretched-link">Restauraciones
                                         Dentales</a>
                                 </h4>
                                 <p class="description">Nuestro equipo de expertos en odontología restauradora se dedica
@@ -110,9 +113,9 @@
 
                     <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="200">
                         <div class="service-item d-flex">
-                            <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
+                            <div class="icon flex-shrink-0"><i class="bi bi-clipboard-data"></i></div>
                             <div>
-                                <h4 class="title"><a href="services-details.html" class="stretched-link">Limpieza
+                                <h4 class="title"><a href="#" class="stretched-link">Limpieza
                                         Dental</a></h4>
                                 <p class="description">Nuestro servicio de limpieza dental está diseñado para mantener
                                     tu boca sana y libre de enfermedades periodontales. Nuestros higienistas dentales
@@ -125,9 +128,9 @@
 
                     <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="300">
                         <div class="service-item d-flex">
-                            <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
+                            <div class="icon flex-shrink-0"><i class="bi bi-clipboard-check"></i></div>
                             <div>
-                                <h4 class="title"><a href="services-details.html" class="stretched-link">Implantes
+                                <h4 class="title"><a href="#" class="stretched-link">Implantes
                                         Dentales</a></h4>
                                 <p class="description">Si has perdido uno o varios dientes, nuestros especialistas en
                                     implantes dentales pueden ayudarte a recuperar tu sonrisa completa y funcional. Los
@@ -140,9 +143,9 @@
 
                     <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="400">
                         <div class="service-item d-flex">
-                            <div class="icon flex-shrink-0"><i class="bi bi-binoculars"></i></div>
+                            <div class="icon flex-shrink-0"><i class="bi bi-clipboard-pulse"></i></div>
                             <div>
-                                <h4 class="title"><a href="services-details.html" class="stretched-link">Alineadores
+                                <h4 class="title"><a href="#" class="stretched-link">Alineadores
                                         Invisibles</a></h4>
                                 <p class="description">Nuestro tratamiento con alineadores invisibles es una alternativa
                                     estética a los tradicionales brackets metálicos. Utilizamos tecnología de vanguardia
@@ -155,9 +158,9 @@
 
                     <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="500">
                         <div class="service-item d-flex">
-                            <div class="icon flex-shrink-0"><i class="bi bi-brightness-high"></i></div>
+                            <div class="icon flex-shrink-0"><i class="bi bi-clipboard-plus"></i></div>
                             <div>
-                                <h4 class="title"><a href="services-details.html" class="stretched-link">Carillas
+                                <h4 class="title"><a href="#" class="stretched-link">Carillas
                                         Dentales</a>
                                 </h4>
                                 <p class="description">Si deseas una sonrisa más blanca y brillante, ofrecemos
@@ -167,13 +170,13 @@
                                     resultados notables y duraderos.</p>
                             </div>
                         </div>
-                    </div><!-- End Service Item -->
+                    </div>
 
                     <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="600">
                         <div class="service-item d-flex">
-                            <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week"></i></div>
+                            <div class="icon flex-shrink-0"><i class="bi bi-clipboard-heart"></i></div>
                             <div>
-                                <h4 class="title"><a href="services-details.html"
+                                <h4 class="title"><a href="#"
                                         class="stretched-link">Blanqueamientos</a></h4>
                                 <p class="description">Si deseas una sonrisa más blanca y brillante, ofrecemos
                                     tratamientos de blanqueamiento dental seguros y efectivos. Ya sea en el consultorio
@@ -275,48 +278,231 @@
 
         </section><!-- End Promotion Section -->
 
+        <!-- About Section - Home Page -->
+    <section id="about" class="about">
 
-        <section class="container portada">
-            <div class="row align-items-center mt-5 p-3">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="row align-items-xl-center gy-5">
+  
+            <div class="col-xl-5 content">
+              <h3>Nosotros</h3>
+              <h2>La Clínica más completa de Mexicali</h2>
+              <p>Los siguientes puntos resaltan la calidad de nuestros servicios, con un enfoque centrado en nuestros pacientes y una atención integral personalizada.</p>
+              <a href="#" class="read-more"><span>Leer mas</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+  
+            <div class="col-xl-7">
+              <div class="row gy-4 icon-boxes">
+  
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                  <div class="icon-box">
+                    <i class="bi bi-buildings"></i>
+                    <h3>Excelencia en atención dental</h3>
+                    <p>Brindamos un cuidado de alta calidad, actualizado y personalizado para resultados sobresalientes.</p>
+                  </div>
+                </div> <!-- End Icon Box -->
+  
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                  <div class="icon-box">
+                    <i class="bi bi-clipboard-pulse"></i>
+                    <h3>Enfoque personalizado</h3>
+                    <p>Escuchamos tus necesidades y metas, creando planes de tratamiento personalizados para una experiencia dental única.</p>
+                  </div>
+                </div> <!-- End Icon Box -->
+  
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                  <div class="icon-box">
+                    <i class="bi bi-command"></i>
+                    <h3>Tecnología avanzada</h3>
+                    <p>Utilizamos tecnología de vanguardia para diagnósticos precisos, tratamientos eficientes y resultados superiores.</p>
+                  </div>
+                </div> <!-- End Icon Box -->
+  
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+                  <div class="icon-box">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    <h3>Enfoque integral de la salud bucal</h3>
+                    <p>Promovemos la prevención, educación y bienestar general para mantener una sonrisa saludable de por vida.</p>
+                  </div>
+                </div> <!-- End Icon Box -->
+  
+              </div>
+            </div>
+  
+          </div>
+        </div>
+  
+      </section><!-- End About Section -->
 
-                <div class="col-12 d-flex flex-column p-3 text-white">
-                    <h1 class="text-center fw-bold display-5 mb-3">Clinica Odontologica Centro Civico</h1>
+      <!-- Contact Section - Home Page -->
+    <section id="contact" class="contact">
 
-                    <p class="text-center"><strong>strong</strong>Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Harum mollitia quisquam, blanditiis vero repellat dignissimos? Adipisci itaque
-                        recusandae porro error quasi. Dicta eveniet laborum, ea ad laudantium libero fugiat inventore.
-                    </p>
-                    <div class="d-flex justify-content-center">
-                        <button type="button" class="btn btn-dark">Promociones</button>
-                    </div>
+        <!--  Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Contacto</h2>
+          <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        </div><!-- End Section Title -->
+  
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+  
+          <div class="row gy-4">
+  
+            <div class="col-lg-6">
+  
+              <div class="row gy-4">
+                <div class="col-md-6">
+                  <div class="info-item" data-aos="fade" data-aos-delay="200">
+                    <i class="bi bi-geo-alt"></i>
+                    <h3>Direccion</h3>
+                    <p>Plaza Toros Calafia</p> 
+                    <p>Calzada Independencia 1086</p>
+                    <p>Centro Cívico</p>
+                    <p>21000 Mexicali, B.C.</p>
+                    <p>México</p>
+                  </div>
+                </div><!-- End Info Item -->
+  
+                <div class="col-md-6">
+                  <div class="info-item" data-aos="fade" data-aos-delay="300">
+                    <i class="bi bi-telephone"></i>
+                    <h3>Llamanos</h3>
+                    <p>+1 5589 55488 55</p>
+                    <p>+1 6678 254445 41</p>
+                  </div>
+                </div><!-- End Info Item -->
+  
+                <div class="col-md-6">
+                  <div class="info-item" data-aos="fade" data-aos-delay="400">
+                    <i class="bi bi-envelope"></i>
+                    <h3>Email</h3>
+                    <p>info@example.com</p>
+                    <p>contact@example.com</p>
+                  </div>
+                </div><!-- End Info Item -->
+  
+                <div class="col-md-6">
+                  <div class="info-item" data-aos="fade" data-aos-delay="500">
+                    <i class="bi bi-clock"></i>
+                    <h3>Horarios</h3>
+                    <p>Lunes a Viernes</p>
+                    <p>9:00AM - 13:00PM</p> 
+                    <p>14:00PM - 18:00PM</p>
+                    <p>Sabado</p>
+                    <p>9:00AM - 14:00PM</p>
+                  </div>
+                </div><!-- End Info Item -->
+  
+              </div>
+  
+            </div>
+  
+            <div class="col-lg-6">
+              <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                <div class="row gy-4">
+  
+                  <div class="col-md-6">
+                    <input type="text" name="name" class="form-control" placeholder="Nombre" required>
+                  </div>
+  
+                  <div class="col-md-6 ">
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                  </div>
+  
+                  <div class="col-md-12">
+                    <input type="text" class="form-control" name="subject" placeholder="Titulo" required>
+                  </div>
+  
+                  <div class="col-md-12">
+                    <textarea class="form-control" name="message" rows="6" placeholder="Mensaje" required></textarea>
+                  </div>
+  
+                  <div class="col-md-12 text-center">
+                    <div class="loading">Cargando</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Tu mensaje ha sido enviado. Gracias!</div>
+  
+                    <button type="submit">Enviar Mensaje</button>
+                  </div>
+  
                 </div>
-        </section>
+              </form>
+            </div><!-- End Contact Form -->
+  
+          </div>
+  
+        </div>
+  
+      </section><!-- End Contact Section -->
 
-        <section class="container">
-            <h2>Formulario
-                <div>
-                    <form action="#" method="POST" class="row">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1"
-                                placeholder="name@example.com">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                    </form>
-                </div>
-            </h2>
-        </section>
         {% endblock %}
     </main>
 
-    <footer>
+    <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span>Cívico Dental Care</span>
+          </a>
+          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+          <div class="social-links d-flex mt-4">
+            <!-- <a href=""><i class="bi bi-twitter"></i></a> -->
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <!-- <a href=""><i class="bi bi-linkedin"></i></a> -->
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Links más usados</h4>
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Promociones</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Nuestros servicios</h4>
+          <ul>
+            <li><a href="#">Restauraciones</a></li>
+            <li><a href="#">Alineadores</a></li>
+            <li><a href="#">Implantes</a></li>
+            <li><a href="#">Blanqueamientos</a></li>
+            <li><a href="#">Limpieza dental</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contacto</h4>
+          <p>Plaza Toros Calafia</p> 
+                    <p>Calzada Independencia 1086</p>
+                    <p>Centro Cívico</p>
+                    <p>21000 Mexicali, B.C.</p>
+                    <p>México</p>
+          <p class="mt-4"><strong>Telefono:</strong> <span>+1 5589 55488 55</span></p>
+          <p><strong>Email:</strong> <span>info@example.com</span></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>&copy; <span>Copyright</span> <strong class="px-1">Cívico Dental Care</strong> <span>All Rights Reserved</span></p>
+
+    </div>
+
+  </footer><!-- End Footer -->
+
+
+    <!-- <footer>
         <div class="container bg-dark text-bg-dark">
             <div class="row justify-content-md-evenly align-items-md-center border-bottom">
                 <div class="d-flex flex-column align-items-center mt-3 p-3 col-md-4">
-                    <!-- <i class="bi bi-brightness-alt-high fs-1"></i> -->
+                    <i class="bi bi-brightness-alt-high fs-1"></i>
                     <h3>Contacto</h3>
                     <span>686 962 0888</span>
                     <span>(760) 848-3911</span>
@@ -335,28 +521,13 @@
                     </div>
 
                 </div>
-
-                <!-- <div class="mt-3 p-3 col-md-4">
-                    <h3 class="text-center text-md-start">Suscribite a nuestro Newsletter</h3>
-                    <form action="" class="row">
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control text-bg-dark" id="newsletter"
-                                placeholder="name@example.com">
-                            <label for="newsletter">Email address</label>
-                        </div>
-
-                        <div class="d-flex justify-content-center mb-3 justify-content-md-start">
-                            <input type="submit" class="btn btn-light btn-lg" value="Suscribir">
-                        </div>
-                    </form>
-                </div> -->
             </div>
 
             <div class="d-flex justify-content-center p-3">
                 <span>© 2023 Civico Dental | Todos los derechos reservados</span>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
