@@ -66,7 +66,7 @@
           <div class="col-lg-5">
             <form action="#" class="sign-up-form d-flex" data-aos="fade-up" data-aos-delay="300">
               <input type="text" class="form-control" placeholder="Ingrese email">
-              <input type="submit" class="btn btn-primary" value="Comenzar">
+              <input type="submit" class="btn btn-primary" value="Suscribirme">
             </form>
           </div>
         </div>
@@ -393,32 +393,38 @@
           </div>
 
           <div class="col-lg-6">
-            <form action="{% url 'civico:index' %}" method="post" class="php-email-form" data-aos="fade-up"
+            <form action="" method="post" class="php-email-form" data-aos="fade-up"
               data-aos-delay="200">
+              {% csrf_token %}
               <div class="row gy-4">
 
                 <div class="col-md-6">
-                  <!-- <input type="text" name={{ form.nombre }} class="form-control" placeholder="Nombre" required> -->
+                  <!-- <input type="text" name="{{ form.nombre }}" class="form-control" placeholder="Nombre" required> -->
+                  {{ form.nombre }}
                 </div>
+
 
                 <div class="col-md-6 ">
-                  <!-- <input type="email" class="form-control" name={{ form.email }} placeholder="Email" required> -->
+                  <!-- <input type="email" class="form-control" name="{{ form.email }}" placeholder="Email" required> -->
+                  {{ form.email }}
                 </div>
 
                 <div class="col-md-12">
-                  <!-- <input type="text" class="form-control" name={{ form.titulo }} placeholder="Titulo" required> -->
+                  <!-- <input type="text" class="form-control" name="{{ form.titulo }}" placeholder="Titulo" required> -->
+                  {{ form.titulo }}
                 </div>
 
                 <div class="col-md-12">
-                  <!-- <textarea class="form-control" name={{ form.mensaje }} rows="6" placeholder="Mensaje" required></textarea> -->
+                  <!-- <textarea class="form-control" name="{{ form.mensaje }}" rows="6" placeholder="Mensaje" required></textarea> -->
+                  {{ form.mensaje }}
                 </div>
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Cargando</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Tu mensaje ha sido enviado. Gracias!</div>
-
+                  {% if sent_message %}
+                  <div>Tu mensaje ha sido enviado. Gracias!</div>
+                  {% else %}
                   <button type="submit">Enviar Mensaje</button>
+                  {% endif %}
                 </div>
 
               </div>
@@ -446,8 +452,10 @@
           <p>Comienza tu camino hacia una salud bucal óptima</p>
           <div class="social-links d-flex mt-4">
             <!-- <a href=""><i class="bi bi-twitter"></i></a> -->
-            <a href="https://www.facebook.com/CivicoDentalCareMexicali?mibextid=LQQJ4d" target="_blank"><i class="bi bi-facebook"></i></a>
-            <a href="https://www.instagram.com/civicodentalcaremexicali/" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.facebook.com/CivicoDentalCareMexicali?mibextid=LQQJ4d" target="_blank"><i
+                class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/civicodentalcaremexicali/" target="_blank"><i
+                class="bi bi-instagram"></i></a>
             <!-- <a href=""><i class="bi bi-linkedin"></i></a> -->
           </div>
         </div>

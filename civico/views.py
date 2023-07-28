@@ -8,7 +8,7 @@ def index(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'civico/index.html')
+            return render(request, 'civico/index.html',{'sent_message': True})
     else:
         form = ContactForm()
     return render(request, 'civico/index.html', {'form': form})
