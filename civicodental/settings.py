@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-5e6jkh*!jp^s262aj=y#f8ty7wefaa&1s%4u)7r#&u_#t)1%y(
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'civico.ingenios.com.ar']
+CSRF_TRUSTED_ORIGINS = ['https://civico.ingenios.com.ar']
 
 
 # Application definition
