@@ -20,3 +20,6 @@ civicodental/__pycache__/__init__.cpython-311.pyc
 civicodental/__pycache__/settings.cpython-311.pyc
 civicodental/__pycache__/urls.cpython-311.pyc
 civicodental/__pycache__/wsgi.cpython-311.pyc
+civico/__pycache__/forms.cpython-311.pyc
+.gitignore
+db.sqlite3

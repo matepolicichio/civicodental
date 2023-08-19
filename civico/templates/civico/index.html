@@ -7,52 +7,75 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Civico Dental Care Mexicali</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'civico/img/logo1.png' %}" rel="icon">
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <!-- Vendor CSS Files -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link rel="stylesheet" href="{% static 'civico/styles.css' %}">
-  <!-- Favicons -->
-  <link href="{% static 'civico/img/logo_negro.svg' %}" rel="icon">
-  <title>Civico Dental Care Mexicali</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="../../static/civico/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../../static/civico/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../../static/civico/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <!-- <link rel="stylesheet" href="{% static 'civico/styles.css' %}"> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'civico/css/main.css' %}">
+
 </head>
 
-<body>
+{% block contenido %}
 
-  <header class="navbar navbar-expand-md navbar-dark fixed-top">
+<body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="container-fluid d-flex align-items-center justify-content-between">
-      <div class="d-flex justify-content-around align-items-center fs-2 fw-bold">
-        <!-- <i class="bi bi-brightness-alt-high fs-1 text-white"></i> -->
-        <img src="{% static 'civico/img/logo_blanco.svg' %}" alt="Logo" width="80"
-          class="d-inline-block align-text-center ms-2">
-        <a class="navbar-brand ms-1" href="{% url 'civico:index' %}">Civico Dental Care</a>
-      </div>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <nav class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="{% url 'civico:index' %}">Inicio</a>
-          <a class="nav-link" href="#services">Servicios</a>
-          <a class="nav-link" href="#promociones">Promociones</a>
-          <a class="nav-link" href="#about">Nosotros</a>
-          <a class="nav-link" href="#contact">Contacto</a>
-        </div>
-      </nav>
+      <a href="{% url 'civico:index' %}" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="{% static 'civico/img/favicon.svg' %}" alt="civico-logo"> -->
+
+        <img src="{% static 'civico/img/logo1.png' %}" alt="Logo" width="80">
+        <h1>Civico Dental Care</h1>
+        <!-- <span>.</span> -->
+      </a>
+
+      <!-- Nav Menu -->
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{% url 'civico:index' %}#hero" class="active">Inicio</a></li>
+          <li><a href="{% url 'civico:index' %}#about">Nosotros</a></li>
+          <li><a href="{% url 'civico:index' %}#services">Servicios</a></li>
+          <li><a href="{% url 'civico:index' %}#promociones">Promociones</a></li>
+
+          <li><a href="{% url 'civico:index' %}#portfolio">Experiencia</a></li>
+          <li><a href="{% url 'civico:index' %}#team">Odontólogos</a></li>
+          <li><a href="{% url 'civico:index' %}#contact">Contacto</a></li>
+        </ul>
+
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav><!-- End Nav Menu -->
+
+      <a class="btn-getstarted" href="{% url 'civico:index' %}#about">Comenzar</a>
+
     </div>
-  </header>
+  </header><!-- End Header -->
 
+  <main id="main">
+    <!-- Hero Section - Home Page -->
 
-
-  <main>
-    {% block contenido %}
     <section id="hero" class="hero">
 
       <img src="../../static/civico/img/civico_27.JPG" alt="" data-aos="fade-in">
@@ -75,198 +98,6 @@
       </div>
 
     </section>
-
-    <!-- Services Section - Home Page -->
-    <section id="services" class="services">
-
-      <!--  Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Servicios</h2>
-        <p>En nuestra clínica, nos enorgullece brindar una atención dental de alta calidad y personalizada.
-          Nuestro objetivo es mejorar la salud bucal y la confianza de nuestros pacientes a través de una
-          amplia gama de servicios odontológicos.
-        </p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-minus"></i></div>
-              <div>
-                <h4 class="title"><a class="stretched-link">Restauraciones
-                    Dentales</a>
-                </h4>
-                <p class="description">Para dientes dañados, restauramos la función y la apariencia de tus dientes afectados, ya sea mediante obturaciones o incrustaciones con nuestros dentistas y alta tecnología.
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- End Service Item -->
-
-          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-data"></i></div>
-              <div>
-                <h4 class="title"><a class="stretched-link">Limpieza
-                    Dental</a></h4>
-                <p class="description">Mantén tu boca sana y libre de enfermedades periodontales. Elimina la placa y el sarro acumulados. 
-                </p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-check"></i></div>
-              <div>
-                <h4 class="title"><a class="stretched-link">Implantes
-                    Dentales</a></h4>
-                <p class="description">Reemplaza dientes perdidos con Implantes Dentales de titanio. De manera segura y cómoda. Consolidamos una base segura en el hueso de la mandíbula para que recuperes la funcionalidad completa de tu sonrisa.</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-pulse"></i></div>
-              <div>
-                <h4 class="title"><a class="stretched-link">Ortodoncia</a></h4>
-                <p class="description">Alinea tus dientes con comodidad y eficacia. Te acompañamos en el tratamiento completo de ortodoncia con nuestro equipo de alta calidad para garantizar tu salud.</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="500">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-plus"></i></div>
-              <div>
-                <h4 class="title"><a class="stretched-link">Carillas
-                    Dentales</a>
-                </h4>
-                <p class="description">Si en tus dientes tienes manchas, desgaste o fracturas, considera las carillas dentales, son finas láminas de porcelana que se adhieren a la parte frontal de tus dientes para darte una sonrisa natural.</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-heart"></i></div>
-              <div>
-                <h4 class="title"><a class="stretched-link">Blanqueamientos</a></h4>
-                <p class="description">Elimina las manchas y aclara el tono de tus dientes dejándolos brillantes. Vuelve a recuperar tu confianza de la mano de nuestros dentistas cosméticos a la hora de sonreír.</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="700">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-heart"></i></div>
-              <div>
-                <h4 class="title"><a class="stretched-link">Endodoncia</a></h4>
-                <p class="description">Salva tus dientes dañados con endodoncia. Nuestros dentistas se ocupan de garantizar tu salud bucal y acompañarte en el procedimiento completo.</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="800">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-heart"></i></div>
-              <div>
-                <h4 class="title"><a class="stretched-link">Periodoncia</a></h4>
-                <p class="description">Dejar que el estado de tus encías empeore puede ser dañino. Trata la enfermedad periodontal con especialistas de alta calidad para restaurar tu salud bucal.</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- End Services Section -->
-
-    <!-- Promotions Section - Home Page -->
-    <section id="promociones" class="services">
-
-      <!--  Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Promociones</h2>
-        <p>¡Aprovecha estas oportunidades únicas y comienza tu camino hacia una salud bucal óptima y una sonrisa
-          deslumbrante hoy mismo!
-        </p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item d-flex">
-              <div class="card">
-                <img src="../../static/civico/img/promocion1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Carillas Dentales</h5>
-                  <p class="card-text">Para corregir imperfecciones estéticas como manchas,
-                    desgaste o fracturas.</p>
-                  <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item d-flex">
-              <div class="card">
-                <img src="../../static/civico/img/promocion2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Limpieza Dental</h5>
-                  <p class="card-text">Profunda, eliminando la placa y el sarro acumulados.</p>
-                  <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item d-flex">
-              <div class="card">
-                <img src="../../static/civico/img/promocion3.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Beneficios</h5>
-                  <p class="card-text"></p>
-                  <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item d-flex">
-              <div class="card">
-                <img src="../../static/civico/img/promocion4.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Promocion</h5>
-                  <p class="card-text">Para mantener una sonrisa radiante.</p>
-                  <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item d-flex">
-              <div class="card">
-                <img src="../../static/civico/img/promocion5.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Implantes Dentales</h5>
-                  <p class="card-text">Para recuperar tu sonrisa completa y funcional.</p>
-                  <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- End Promotion Section -->
 
     <!-- About Section - Home Page -->
     <section id="about" class="about">
@@ -329,6 +160,919 @@
 
     </section><!-- End About Section -->
 
+    <!-- Services Section - Home Page -->
+    <section id="services" class="services">
+
+      <!--  Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Servicios</h2>
+        <p>En nuestra clínica, nos enorgullece brindar una atención dental de alta calidad y personalizada.
+          Nuestro objetivo es mejorar la salud bucal y la confianza de nuestros pacientes a través de una
+          amplia gama de servicios odontológicos.
+        </p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item d-flex">
+              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-minus"></i></div>
+              <div>
+                <h4 class="title"><a class="stretched-link">Restauraciones
+                    Dentales</a>
+                </h4>
+                <p class="description">Para dientes dañados, restauramos la función y la apariencia de tus dientes
+                  afectados, ya sea mediante obturaciones o incrustaciones con nuestros dentistas y alta tecnología.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- End Service Item -->
+
+          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item d-flex">
+              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-data"></i></div>
+              <div>
+                <h4 class="title"><a class="stretched-link">Limpieza
+                    Dental</a></h4>
+                <p class="description">Mantén tu boca sana y libre de enfermedades periodontales. Elimina la placa y el
+                  sarro acumulados.
+                </p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item d-flex">
+              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-check"></i></div>
+              <div>
+                <h4 class="title"><a class="stretched-link">Implantes
+                    Dentales</a></h4>
+                <p class="description">Reemplaza dientes perdidos con Implantes Dentales de titanio. De manera segura y
+                  cómoda. Consolidamos una base segura en el hueso de la mandíbula para que recuperes la funcionalidad
+                  completa de tu sonrisa.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item d-flex">
+              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-pulse"></i></div>
+              <div>
+                <h4 class="title"><a class="stretched-link">Ortodoncia</a></h4>
+                <p class="description">Alinea tus dientes con comodidad y eficacia. Te acompañamos en el tratamiento
+                  completo de ortodoncia con nuestro equipo de alta calidad para garantizar tu salud.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item d-flex">
+              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-plus"></i></div>
+              <div>
+                <h4 class="title"><a class="stretched-link">Carillas
+                    Dentales</a>
+                </h4>
+                <p class="description">Si en tus dientes tienes manchas, desgaste o fracturas, considera las carillas
+                  dentales, son finas láminas de porcelana que se adhieren a la parte frontal de tus dientes para darte
+                  una sonrisa natural.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item d-flex">
+              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-heart"></i></div>
+              <div>
+                <h4 class="title"><a class="stretched-link">Blanqueamientos</a></h4>
+                <p class="description">Elimina las manchas y aclara el tono de tus dientes dejándolos brillantes. Vuelve
+                  a recuperar tu confianza de la mano de nuestros dentistas cosméticos a la hora de sonreír.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="700">
+            <div class="service-item d-flex">
+              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-heart"></i></div>
+              <div>
+                <h4 class="title"><a class="stretched-link">Endodoncia</a></h4>
+                <p class="description">Salva tus dientes dañados con endodoncia. Nuestros dentistas se ocupan de
+                  garantizar tu salud bucal y acompañarte en el procedimiento completo.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="800">
+            <div class="service-item d-flex">
+              <div class="icon flex-shrink-0"><i class="bi bi-clipboard-heart"></i></div>
+              <div>
+                <h4 class="title"><a class="stretched-link">Periodoncia</a></h4>
+                <p class="description">Dejar que el estado de tus encías empeore puede ser dañino. Trata la enfermedad
+                  periodontal con especialistas de alta calidad para restaurar tu salud bucal.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- End Services Section -->
+
+    <!-- Stats Section - Home Page -->
+    <section id="stats" class="stats">
+
+      <img src="{% static 'civico/img/stats-bg.jpg' %}" alt="" data-aos="fade-in">
+
+      <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="1200" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <p>Clientes</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <p>Especialidades</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <p>Experiencia</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="11" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <p>Odontólogos</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- End Stats Section -->
+
+    <!-- Promotions Section - Home Page -->
+    <section id="promociones" class="services">
+
+      <!--  Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Promociones</h2>
+        <p>¡Aprovecha estas oportunidades únicas y comienza tu camino hacia una salud bucal óptima y una sonrisa
+          deslumbrante hoy mismo!
+        </p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item d-flex">
+              <div class="card">
+                <img src="../../static/civico/img/promociones/promocion1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Carillas Dentales</h5>
+                  <p class="card-text">Para corregir imperfecciones estéticas como manchas,
+                    desgaste o fracturas.</p>
+                  <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item d-flex">
+              <div class="card">
+                <img src="../../static/civico/img/promociones/promocion2.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Limpieza Dental</h5>
+                  <p class="card-text">Profunda, eliminando la placa y el sarro acumulados.</p>
+                  <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item d-flex">
+              <div class="card">
+                <img src="../../static/civico/img/promociones/promocion3.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Beneficios</h5>
+                  <p class="card-text"></p>
+                  <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item d-flex">
+              <div class="card">
+                <img src="../../static/civico/img/promociones/promocion4.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Promocion</h5>
+                  <p class="card-text">Para mantener una sonrisa radiante.</p>
+                  <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item d-flex">
+              <div class="card">
+                <img src="../../static/civico/img/promociones/promocion5.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Implantes Dentales</h5>
+                  <p class="card-text">Para recuperar tu sonrisa completa y funcional.</p>
+                  <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- End Promotion Section -->
+
+    <!-- Features Section - Home Page -->
+    <section id="features" class="features">
+
+      <!--  Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Distintivos</h2>
+        <p>Explora nuestros servicios destacados que representan lo mejor de nuestra clínica. Desde restauraciones
+          avanzadas hasta alineadores invisibles, conoce cómo estamos redefiniendo el cuidado dental.
+        </p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-lg-5 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+            <h3>Restauraciones Dentales Avanzadas</h3>
+            <p>
+              Descubre nuestra experiencia en restaurar dientes dañados con materiales de primera calidad, devolviendo
+              la funcionalidad y estética a tu sonrisa.
+            </p>
+            <a href="{% url 'civico:index' %}#about" class="btn btn-get-started">Comenzar</a>
+          </div>
+          <div class="col-lg-7 order-1 order-lg-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
+            <div class="image-stack">
+              <img src="{% static 'civico/img/destacados/features-light-1.jpg' %}" alt="" class="stack-front">
+              <img src="{% static 'civico/img/destacados/features-light-2.jpg' %}" alt="" class="stack-back">
+            </div>
+          </div>
+        </div><!-- Features Item -->
+
+        <div class="row gy-4 align-items-stretch justify-content-between features-item ">
+          <div class="col-lg-6 d-flex align-items-center features-img-bg" data-aos="zoom-out">
+            <img src="{% static 'civico/img/destacados/features-light-3.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-5 d-flex justify-content-center flex-column" data-aos="fade-up">
+            <h3>Alineadores Invisibles para Sonrisas Perfectas</h3>
+            <p>Experimenta la transformación con alineadores transparentes que enderezan suavemente tus dientes,
+              logrando una sonrisa recta sin preocupaciones estéticas.</p>
+            <ul>
+              <li><i class="bi bi-check"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
+              <li><i class="bi bi-check"></i><span> Duis aute irure dolor in reprehenderit in voluptate velit.</span>
+              </li>
+              <li><i class="bi bi-check"></i> <span>Facilis ut et voluptatem aperiam. Autem soluta ad fugiat</span>.
+              </li>
+            </ul>
+            <a href="{% url 'civico:index' %}#about" class="btn btn-get-started align-self-start">Comenzar</a>
+          </div>
+        </div><!-- Features Item -->
+
+      </div>
+
+    </section><!-- End Features Section -->
+
+    <!-- Portfolio Section - Home Page -->
+    <section id="portfolio" class="portfolio">
+
+      <!--  Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Experiencia</h2>
+        <p>Sumérgete en nuestra clínica a través de fotos y videos que capturan la experiencia de recibir atención
+          dental de alta calidad en un entorno cómodo y acogedor.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter="*" class="filter-active">Todas</li>
+            <li data-filter=".filter-app">Limpieza</li>
+            <li data-filter=".filter-product">Restauraciones</li>
+            <li data-filter=".filter-branding">Ortodoncia</li>
+          </ul><!-- End Portfolio Filters -->
+
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <img src="{% static 'civico/img/masonry-portfolio/masonry-portfolio-1.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>App 1</h4>
+                <p>Lorem ipsum, dolor sit</p>
+                <a href="{% static 'civico/img/masonry-portfolio/masonry-portfolio-1.jpg' %}" title="App 1"
+                  data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="{% url 'civico:index' %}#portfolio" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <img src="{% static 'civico/img/masonry-portfolio/masonry-portfolio-2.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Product 1</h4>
+                <p>Lorem ipsum, dolor sit</p>
+                <a href="{% static 'civico/img/masonry-portfolio/masonry-portfolio-2.jpg' %}" title="Product 1"
+                  data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
+                    class="bi bi-zoom-in"></i></a>
+                <a href="{% url 'civico:index' %}#portfolio" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <img src="{% static 'civico/img/masonry-portfolio/masonry-portfolio-3.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Branding 1</h4>
+                <p>Lorem ipsum, dolor sit</p>
+                <a href="{% static 'civico/img/masonry-portfolio/masonry-portfolio-3.jpg' %}" title="Branding 1"
+                  data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
+                    class="bi bi-zoom-in"></i></a>
+                <a href="{% url 'civico:index' %}#portfolio" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <img src="{% static 'civico/img/masonry-portfolio/masonry-portfolio-4.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>App 2</h4>
+                <p>Lorem ipsum, dolor sit</p>
+                <a href="{% static 'civico/img/masonry-portfolio/masonry-portfolio-4.jpg' %}" title="App 2"
+                  data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="{% url 'civico:index' %}#portfolio" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <img src="{% static 'civico/img/masonry-portfolio/masonry-portfolio-5.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Product 2</h4>
+                <p>Lorem ipsum, dolor sit</p>
+                <a href="{% static 'civico/img/masonry-portfolio/masonry-portfolio-5.jpg' %}" title="Product 2"
+                  data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
+                    class="bi bi-zoom-in"></i></a>
+                <a href="{% url 'civico:index' %}#portfolio" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <img src="{% static 'civico/img/masonry-portfolio/masonry-portfolio-6.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Branding 2</h4>
+                <p>Lorem ipsum, dolor sit</p>
+                <a href="{% static 'civico/img/masonry-portfolio/masonry-portfolio-6.jpg' %}" title="Branding 2"
+                  data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
+                    class="bi bi-zoom-in"></i></a>
+                <a href="{% url 'civico:index' %}#portfolio" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <img src="{% static 'civico/img/masonry-portfolio/masonry-portfolio-7.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>App 3</h4>
+                <p>Lorem ipsum, dolor sit</p>
+                <a href="{% static 'civico/img/masonry-portfolio/masonry-portfolio-7.jpg' %}" title="App 3"
+                  data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="{% url 'civico:index' %}#portfolio" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <img src="{% static 'civico/img/masonry-portfolio/masonry-portfolio-8.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Product 3</h4>
+                <p>Lorem ipsum, dolor sit</p>
+                <a href="{% static 'civico/img/masonry-portfolio/masonry-portfolio-8.jpg' %}" title="Product 3"
+                  data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
+                    class="bi bi-zoom-in"></i></a>
+                <a href="{% url 'civico:index' %}#portfolio" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <img src="{% static 'civico/img/masonry-portfolio/masonry-portfolio-9.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Branding 3</h4>
+                <p>Lorem ipsum, dolor sit</p>
+                <a href="{% static 'civico/img/masonry-portfolio/masonry-portfolio-9.jpg' %}" title="Branding 2"
+                  data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
+                    class="bi bi-zoom-in"></i></a>
+                <a href="{% url 'civico:index' %}#portfolio" title="More Details" class="details-link"><i
+                    class="bi bi-link-45deg"></i></a>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+          </div><!-- End Portfolio Container -->
+
+        </div>
+
+      </div>
+
+    </section><!-- End Portfolio Section -->
+
+    <!-- Faq Section - Home Page -->
+    <section id="faq" class="faq">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="content px-xl-5">
+              <h3><span><strong>Preguntas</strong> Frecuentes</span></h3>
+              <p>
+                ¿Tienes preguntas sobre nuestros servicios? Explora nuestras respuestas a las preguntas más frecuentes
+                para obtener información valiosa sobre tus preocupaciones dentales.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="faq-container">
+              <div class="faq-item faq-active">
+                <h3><span class="num">1.</span> <span>¿Cuándo debo hacerme una limpieza dental?</span></h3>
+                <div class="faq-content">
+                  <p>Mantener una limpieza dental regular es esencial. Te recomendamos programar una cada seis meses
+                    para prevenir problemas.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">2.</span> <span>¿Cuánto tiempo dura el proceso de blanqueamiento dental?</span>
+                </h3>
+                <div class="faq-content">
+                  <p>Por lo general, el blanqueamiento toma de una a tres sesiones y los resultados pueden durar meses,
+                    dependiendo de tus hábitos.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">3.</span> <span>¿Qué diferencia hay entre carillas y coronas dentales?</span>
+                </h3>
+                <div class="faq-content">
+                  <p>Las carillas son delgadas láminas que cubren solo la parte frontal de los dientes, mientras que las
+                    coronas encapsulan todo el diente.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">4.</span> <span>¿Los implantes dentales son dolorosos?</span>
+                </h3>
+                <div class="faq-content">
+                  <p>La mayoría de los pacientes reportan un malestar mínimo durante el procedimiento y la recuperación
+                    es generalmente suave con analgésicos.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3><span class="num">5.</span> <span>¿Qué son los alineadores invisibles y cómo funcionan?</span></h3>
+                <div class="faq-content">
+                  <p>Los alineadores transparentes son una alternativa discreta a los brackets. Cambian suavemente la
+                    posición de los dientes con el tiempo.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- End Faq Section -->
+
+    <!-- Team Section - Home Page -->
+    <section id="team" class="team">
+
+      <!--  Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Especialistas</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+            <div class="member-img">
+              <img src="{% static 'civico/img/team/team-1.jpg' %}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Aaron Ivan Monroy Aripez</h4>
+              <span>Cirujano Dentista</span>
+              <p></p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="200">
+            <div class="member-img">
+              <img src="{% static 'civico/img/team/team-2.jpg' %}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Alejandro Birkitt Sulquivido</h4>
+              <span>Cirujano Dentista</span>
+              <p></p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="300">
+            <div class="member-img">
+              <img src="{% static 'civico/img/team/team-3.jpg' %}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Alonso Luis Rosas</h4>
+              <span>Ortodoncista</span>
+              <p></p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="400">
+            <div class="member-img">
+              <img src="{% static 'civico/img/team/team-4.jpg' %}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Francisco Javier Menge Terriquez</h4>
+              <span>Endodoncista</span>
+              <p></p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="500">
+            <div class="member-img">
+              <img src="{% static 'civico/img/team/team-5.jpg' %}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Isaac Amhed Soto Rodriguez</h4>
+              <span>Cirujano Dentista</span>
+              <p></p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
+            <div class="member-img">
+              <img src="{% static 'civico/img/team/team-6.jpg' %}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Luis Carlos Reyna</h4>
+              <span>Ciujano Maxilofacial</span>
+              <p></p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="700">
+            <div class="member-img">
+              <img src="{% static 'civico/img/team/team-7.jpg' %}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Lydia del Carmen Vazquez</h4>
+              <span>Ortodoncista</span>
+              <p></p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="800">
+            <div class="member-img">
+              <img src="{% static 'civico/img/team/team-8.jpg' %}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Manuel de Santiago Pintado</h4>
+              <span>Cirujano Dentista</span>
+              <p></p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="900">
+            <div class="member-img">
+              <img src="{% static 'civico/img/team/team-9.jpg' %}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Oscar Manuel Mendivil Marroquin</h4>
+              <span>Cirujano Dentista</span>
+              <p></p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="1000">
+            <div class="member-img">
+              <img src="{% static 'civico/img/team/team-10.jpg' %}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Quetzalcot Aguirre Limon</h4>
+              <span>Endodoncista</span>
+              <p></p>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="1100">
+            <div class="member-img">
+              <img src="{% static 'civico/img/team/team-11.jpg' %}" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Yamel Jacobo Castro</h4>
+              <span>Periodoncista</span>
+              <p></p>
+            </div>
+          </div><!-- End Team Member -->
+
+        </div>
+
+      </div>
+
+    </section><!-- End Team Section -->
+
+    <!-- Call-to-action Section - Home Page -->
+    <section id="call-to-action" class="call-to-action">
+
+      <img src="{% static 'civico/img/cta-bg.jpg' %}" alt="">
+
+      <div class="container">
+        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-10">
+            <div class="text-center">
+              <h3>Tu Salud Bucal es Nuestra Prioridad</h3>
+              <p>Únete a nosotros para experimentar una odontología de calidad, personalizada y avanzada que
+                transformará tu sonrisa y tu confianza. Nuestro equipo dedicado está aquí para cuidar de tu bienestar
+                bucal y crear resultados que te hagan sonreír todos los días.</p>
+              <a class="cta-btn" href="{% url 'civico:index' %}#contact">Agenda tu cita!</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- End Call-to-action Section -->
+
+    <!-- Testimonials Section - Home Page -->
+    <section id="testimonials" class="testimonials">
+
+      <div class="container">
+
+        <div class="row align-items-center">
+
+          <div class="col-lg-5 info" data-aos="fade-up" data-aos-delay="100">
+            <h3>Testimonios</h3>
+            <p>
+              Descubre las experiencias reales de nuestros pacientes a través de sus conmovedores testimonios. Sus
+              historias destacan cómo hemos transformado sonrisas y vidas.
+            </p>
+          </div>
+
+          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="swiper">
+              <template class="swiper-config">
+                {
+                "loop": true,
+                "speed" : 600,
+                "autoplay": {
+                "delay": 5000
+                },
+                "slidesPerView": "auto",
+                "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+                }
+                }
+              </template>
+              <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <div class="d-flex">
+                      <img src="{% static 'civico/img/testimonials/testimonials-1.jpg' %}"
+                        class="testimonial-img flex-shrink-0" alt="">
+                      <div>
+                        <h3>María G.</h3>
+                        <h4></h4>
+                        <div class="stars">
+                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      <span>"Increíble experiencia de blanqueamiento dental. ¡Mis dientes nunca han estado tan blancos!
+                        El personal es amable y profesional."</span>
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <div class="d-flex">
+                      <img src="{% static 'civico/img/testimonials/testimonials-2.jpg' %}"
+                        class="testimonial-img flex-shrink-0" alt="">
+                      <div>
+                        <h3>Carlos M.</h3>
+                        <h4></h4>
+                        <div class="stars">
+                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      <span>"Después de años de evitar el dentista, finalmente me hice un implante. ¡Resultó genial y el
+                        proceso fue más fácil de lo que pensaba!"</span>
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <div class="d-flex">
+                      <img src="{% static 'civico/img/testimonials/testimonials-3.jpg' %}"
+                        class="testimonial-img flex-shrink-0" alt="">
+                      <div>
+                        <h3>Ana R.</h3>
+                        <h4></h4>
+                        <div class="stars">
+                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      <span>"Las carillas cambiaron mi vida. Mis dientes ahora se ven perfectos y me siento más segura
+                        que nunca. ¡Gracias, equipo!"</span>
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <div class="d-flex">
+                      <img src="{% static 'civico/img/testimonials/testimonials-4.jpg' %}"
+                        class="testimonial-img flex-shrink-0" alt="">
+                      <div>
+                        <h3>Luis S.</h3>
+                        <h4></h4>
+                        <div class="stars">
+                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      <span>"Los alineadores invisibles fueron la elección correcta para mí. Puedo sonreír sin
+                        inhibiciones durante el proceso de corrección."</span>
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                  <div class="testimonial-item">
+                    <div class="d-flex">
+                      <img src="{% static 'civico/img/testimonials/testimonials-5.jpg' %}"
+                        class="testimonial-img flex-shrink-0" alt="">
+                      <div>
+                        <h3>Elena T.</h3>
+                        <h4></h4>
+                        <div class="stars">
+                          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p>
+                      <i class="bi bi-quote quote-icon-left"></i>
+                      <span>"La limpieza dental fue minuciosa y sin dolor. El equipo me brindó consejos de cuidado oral
+                        personalizados. ¡Volveré!"</span>
+                      <i class="bi bi-quote quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div><!-- End testimonial item -->
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- End Testimonials Section -->
+
     <!-- Contact Section - Home Page -->
     <section id="contact" class="contact">
 
@@ -353,8 +1097,7 @@
                   <p>Calzada Independencia 1086</p>
                   <p>Frente a Plaza Toros Calafia</p>
                   <p>Centro Cívico</p>
-                  <p>21000 Mexicali, B.C.</p>
-                  <p>México</p>
+                  <p>21000 Mexicali, B.C, México</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -383,8 +1126,7 @@
                   <p>Lunes a Viernes</p>
                   <p>9:00AM - 13:00PM</p>
                   <p>14:00PM - 18:00PM</p>
-                  <p>Sabado</p>
-                  <p>9:00AM - 14:00PM</p>
+                  <p>Sabado: 9:00AM - 14:00PM</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -393,8 +1135,7 @@
           </div>
 
           <div class="col-lg-6">
-            <form action="" method="post" class="php-email-form" data-aos="fade-up"
-              data-aos-delay="200">
+            <form action="" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
               {% csrf_token %}
               <div class="row gy-4">
 
@@ -437,7 +1178,6 @@
 
     </section><!-- End Contact Section -->
 
-    {% endblock %}
   </main>
 
   <!-- ======= Footer ======= -->
@@ -474,7 +1214,7 @@
           <h4>Nuestros servicios</h4>
           <ul>
             <li><a href="#services">Restauraciones</a></li>
-            <li><a href="#services">Alineadores</a></li>
+            <li><a href="#services">Ortodoncia</a></li>
             <li><a href="#services">Implantes</a></li>
             <li><a href="#services">Blanqueamientos</a></li>
             <li><a href="#services">Limpieza dental</a></li>
@@ -498,46 +1238,45 @@
     <div class="container copyright text-center mt-4">
       <p>&copy; <span>Copyright</span> <strong class="px-1">Cívico Dental Care</strong> <span>All Rights Reserved</span>
       </p>
-
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
     </div>
 
   </footer><!-- End Footer -->
 
+  <!-- Scroll Top Button -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
-  <!-- <footer>
-        <div class="container bg-dark text-bg-dark">
-            <div class="row justify-content-md-evenly align-items-md-center border-bottom">
-                <div class="d-flex flex-column align-items-center mt-3 p-3 col-md-4">
-                    <i class="bi bi-brightness-alt-high fs-1"></i>
-                    <h3>Contacto</h3>
-                    <span>686 962 0888</span>
-                    <span>(760) 848-3911</span>
-                    <span>686 271 7701</span>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 
-                </div>
-
-                <div class="p-3 col-md-4">
-                    <h3 class="text-center">Redes Sociales</h3>
-                    <div class="d-flex justify-content-around fs-2">
-                        <i class="bi bi-whatsapp"></i>
-                        <i class="bi bi-instagram"></i>
-                        <i class="bi bi-facebook"></i>
-                        <i class="bi bi-linkedin"></i>
-                        <i class="bi bi-twitter"></i>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="d-flex justify-content-center p-3">
-                <span>© 2023 Civico Dental | Todos los derechos reservados</span>
-            </div>
-        </div>
-    </footer> -->
-
+  <!-- Vendor JS Files -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
+  <!-- <script src="{% static 'civico/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script> -->
+  <script src="{% static 'civico/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'civico/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'civico/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'civico/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'civico/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'civico/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'civico/js/main.js' %}"></script>
+
 </body>
+{% endblock %}
 
 </html>
