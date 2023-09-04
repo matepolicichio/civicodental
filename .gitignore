@@ -23,3 +23,6 @@ civicodental/__pycache__/wsgi.cpython-311.pyc
 civico/__pycache__/forms.cpython-311.pyc
 .gitignore
 db.sqlite3
+civico/__pycache__/forms.cpython-39.pyc
+.gitignore
+civico/migrations/__pycache__/0001_initial.cpython-39.pyc
