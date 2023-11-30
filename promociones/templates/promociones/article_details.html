@@ -1,11 +1,11 @@
-{% extends 'promociones/base.html' %}
+{% extends 'civico/base.html' %}
 {% block title %}{{ post.title_tag }}{% endblock %}
 
 {% block body_class %}
-class="blog-details-page" data-bs-spy="scroll" data-bs-target="#navmenu"
+    class="blog-details-page" data-bs-spy="scroll" data-bs-target="#navmenu"
 {% endblock %}
 
-{% block blog_content %}
+{% block main %}
 
 <main id="main">
 
@@ -99,9 +99,6 @@ class="blog-details-page" data-bs-spy="scroll" data-bs-target="#navmenu"
                         <div class="content">
                             {{ post.body | safe }}
                         </div><!-- End post content -->
-
-
-
 
                         <div class="meta-bottom">
                             <i class="bi bi-folder"></i>
@@ -279,6 +276,9 @@ class="blog-details-page" data-bs-spy="scroll" data-bs-target="#navmenu"
 
     </section><!-- End Blog-details Section -->
 
+    {% include 'civico/section/call2action.html' %}
+    {% include 'civico/section/contact.html' %}
+
 </main>
 
 {% endblock %}
@@ -331,124 +331,4 @@ class="blog-details-page" data-bs-spy="scroll" data-bs-target="#navmenu"
     });
 </script>
 
-
 {% endblock %}
-
-
-{% comment %}
-<div class='container mt-5'>
-    <div class="row">
-        <div class="col-lg-8">
-
-            <h1>{{ post.title }}</h1>
-            <small>By:
-                {{ post.author.first_name }}
-                {{ post.author.last_name }} -
-                {{ post.post_date }}
-
-                {% if user.is_authenticated and user.id == post.author.id %}
-                - <a href="{% url 'promociones:update_post' post.pk %}">(Edit)</a>
-                <a href="{% url 'promociones:delete_post' post.pk %}">(Delete)</a>
-
-                {% endif %}
-
-            </small><br />
-            <hr>
-            <br />
-            {% if post.header_image %}
-            <img src="{{ post.header_image.url }}" alt="">
-            {% endif %}
-
-            {{ post.body | safe }}
-
-
-
-            <br><br>
-
-            <form action="{% url 'promociones:like_post' post.pk %}" method="POST">
-                {% csrf_token %}
-                {% if user.is_authenticated %}
-                <button type="submit" , name="post_id" , value="{{ post.id }}" , class="btn {% if user in post.likes.all %} btn-primary 
-{% else %} btn-outline-primary {% endif %} btn-sm">Like
-                </button>
-                {% else %}
-                <small>Login to like</small>
-                {% endif %}
-                - {{ post.likes.count }} Likes
-            </form>
-
-            <br>
-
-            {% if post.author.profile %}
-            <div class="card mb-3">
-                <div class="row g-0 align-items-center">
-                    <div class="col-md-2 p-3">
-                        {% if post.author.profile.profile_pic %}
-                        <img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded-circle" alt="...">
-                        {% else %}
-                        <img src="{% static 'blog\images\default_profile_pic.PNG' %}" class="img-fluid rounded-start"
-                            alt="...">
-
-                        {% endif %}
-                    </div>
-                    <div class="col-md-10 p-3">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                {{ post.author.first_name }}
-                                {{ post.author.last_name }}
-                            </h5>
-                            <p class="card-text">
-                                <small class="text-body-secondary">
-
-                                    <a href="{% url 'members:show_profile' post.author.profile.id %}">Profile Page</a>
-
-
-                                    {% if post.author.profile.website_url %}
-                                    | <a href="{{ post.author.profile.website_url }}">Website</a>
-                                    {% endif %}
-                                    {% if post.author.profile.website_url %}
-                                    | <a href="{{ post.author.profile.facebook }}">Facebook</a>
-                                    {% endif %}
-
-                                    {% if post.author.profile.instagram %}
-                                    | <a href="{{ post.author.profile.instagram }}">Instagram</a>
-                                    {% endif %}
-
-                                    {% if post.author.profile.linkedin %}
-                                    | <a href="{{ post.author.profile.linkedin }}">Linkedin</a>
-                                    {% endif %}
-
-                                </small>
-                            </p>
-                            <p class="card-text">{{ post.author.profile.bio }}</p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-
-            <br>
-            <h2>Comments...</h2>
-
-            {% if user.is_authenticated %}
-            <a href="{% url 'promociones:add_comment' post.pk %}">Add Comment</a>
-            <br><br>
-            {% endif %}
-
-            {% if not post.comments.all %}
-            No comments yet...
-            {% else %}
-            {% for comment in post.comments.all %}
-            <strong>{{ comment.name }} - {{ comment.date_added }}</strong>
-            <br>
-            {{ comment.body }}
-            <br><br>
-            {% endfor %}
-            {% endif %}
-
-        </div>
-    </div>
-</div>
-
-{% endcomment %}

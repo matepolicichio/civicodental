@@ -1,52 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'civico/base.html' %}
+{% block main %}
+<main id="main">
 
-{% load static %}
+    {% for section in visible_sections %}
+        {% with full_path=section.get_full_path %}
+            {% if section.is_visible and section.file_exists %}
+            <section id="{{ section.html_id }}" class="{{ section.section_class.name }}">
+                {% include full_path %}
+            </section>
+            {% endif %}
+        {% endwith %}
+    {% endfor %}
 
-{% block head %}
-{% include 'civico/head.html' %}
-<title>{% block title %}Civico Dental Care Mexicali{% endblock %}</title>
+</main>
 {% endblock %}
 
-<body {% block body_class %}class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu"{% endblock %}>
-
-    {% block header %}
-    {% include 'civico/header.html' %}
-
-
-    {% endblock %}
-
-    {% block main %}
-    {% include 'civico/main.html' %}
-    {% endblock %}
-
-    {% block footer %}
-    {% include 'civico/footer.html' %}
-    {% endblock %}
-
-    {% block scroll %}
-    <!-- Scroll Top Button -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
-    {% endblock %}
-
-    {% block preloader %}
-    <!-- Preloader -->
-    <div id="preloader">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    {% endblock %}
-
-    {% block scripts %}
-    {% include 'civico/scripts.html' %}
-
-    {% block jquery_content %}
-    {%  endblock %}
-
-    {% endblock %}
-
-</body>
-</html>
+{% block preloader %}
+<!-- Preloader -->
+<div id="preloader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+{% endblock %}

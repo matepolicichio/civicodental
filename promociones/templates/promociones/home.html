@@ -1,11 +1,11 @@
-{% extends 'promociones/base.html' %}
-{% block title %}Listado de ideas{% endblock %}
+{% extends 'civico/base.html' %}
+{% block title %}Promociones{% endblock %}
 
 {% block body_class %}
-class="blog-page" data-bs-spy="scroll" data-bs-target="#navmenu"
+    class="blog-page" data-bs-spy="scroll" data-bs-target="#navmenu"
 {% endblock %}
 
-{% block blog_content %}
+{% block main %}
 
 <main id="main">
 
@@ -15,8 +15,8 @@ class="blog-page" data-bs-spy="scroll" data-bs-target="#navmenu"
             <div class="container">
                 <div class="row d-flex justify-content-center text-center">
                     <div class="col-lg-8">
-                        <h1>Nuevas ideas...</h1>
-                        <p class="mb-0">Este es un espacio para crear y dar seguimiento a nuevas ideas...</p>
+                        <h1>Promociones</h1>
+                        <p class="mb-0">A continuación se muestran las promociones vigentes.</p>
                     </div>
                 </div>
             </div>
@@ -81,8 +81,6 @@ class="blog-page" data-bs-spy="scroll" data-bs-target="#navmenu"
                 </div><!-- End post list item -->
 
                 {% endfor %}
-
-
 
             </div><!-- End blog posts list -->
 
