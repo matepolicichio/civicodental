@@ -4,3 +4,5 @@ __pycache__/
 # Ignore Django migrations
 /*/migrations/
 /media/
+civico/migrations/0001_initial.py
+civico/migrations/0001_initial.py

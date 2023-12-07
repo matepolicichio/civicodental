@@ -6,7 +6,7 @@
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a href="{% url 'civico:index' %}" class="logo d-flex align-items-center">
             <span>Civico Dental Care</span>
           </a>
           <p>Comienza tu camino hacia una salud bucal óptima</p>
@@ -23,10 +23,11 @@
         <div class="col-lg-2 col-6 footer-links">
           <h4>Links más usados</h4>
           <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#about">Nosotros</a></li>
-            <li><a href="#services">Servicios</a></li>
-            <li><a href="#promociones">Promociones</a></li>
+            {% if nav_sections %}
+            {% for nav in nav_sections %}
+              <li><a href="{% url 'civico:index' %}#{{ nav.section.html_id }}">{{ nav.section.name }}</a></li>
+            {% endfor %}
+            {% endif %}
           </ul>
         </div>
 

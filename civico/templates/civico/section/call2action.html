@@ -1,6 +1,7 @@
 {% load static %}
+
 <!-- Call-to-action Section - Home Page -->
-<section id="call-to-action" class="call-to-action">
+<section id="{{ section_selection.section.html_id }}" class="call-to-action">
 
   <img src="{% static 'civico/img/call2action.jpg' %}" alt="">
 
@@ -12,10 +13,14 @@
           <p>Únete a nosotros para experimentar una odontología de calidad, personalizada y avanzada que
             transformará tu sonrisa y tu confianza. Nuestro equipo dedicado está aquí para cuidar de tu bienestar
             bucal y crear resultados que te hagan sonreír todos los días.</p>
-          <a class="cta-btn" href="{% url 'civico:index' %}#contact">Agenda tu cita!</a>
+            <a href="https://api.whatsapp.com/send?phone=526869620888&text=Hola, me gustaría recibir más información..."
+              class="cta-btn" target="_blank">Agenda tu cita</a>
+            <!-- <a class="cta-btn" href="{% url 'civico:index' %}#contact">Agenda tu cita!</a> -->
         </div>
       </div>
     </div>
   </div>
 
-</section><!-- End Call-to-action Section -->
+</section>
+
+<!-- End Call-to-action Section -->

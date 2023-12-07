@@ -1,16 +1,13 @@
 {% extends 'civico/base.html' %}
 {% block main %}
+
 <main id="main">
 
-    {% for section in visible_sections %}
-        {% with full_path=section.get_full_path %}
-            {% if section.is_visible and section.file_exists %}
-            <section id="{{ section.html_id }}" class="{{ section.section_class.name }}">
-                {% include full_path %}
-            </section>
-            {% endif %}
-        {% endwith %}
+{% if visible_sections %}
+    {% for section_selection in visible_sections %}
+        {% include section_selection.section.section_path %}
     {% endfor %}
+{% endif %}
 
 </main>
 {% endblock %}

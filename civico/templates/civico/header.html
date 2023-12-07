@@ -16,14 +16,11 @@
       <!-- Nav Menu -->
       <nav id="navmenu" class="navmenu">
         <ul>
-          <!-- <li><a href="{% url 'civico:index' %}#hero" class="active">Inicio</a></li> -->
-          <li><a href="{% url 'civico:index' %}#about">Nosotros</a></li>
-          <li><a href="{% url 'civico:index' %}#services">Servicios</a></li>
-          <li><a href="{% url 'civico:index' %}#promociones">Promociones</a></li>
-
-          <li><a href="{% url 'civico:index' %}#portfolio">Experiencia</a></li>
-          <li><a href="{% url 'civico:index' %}#team">Odontólogos</a></li>
-          <li><a href="{% url 'civico:index' %}#contact">Contacto</a></li>
+          {% if nav_sections %}
+          {% for nav in nav_sections %}
+          <li><a href="{% url 'civico:index' %}#{{ nav.section.html_id }}">{{ nav.section.name }}</a></li>
+          {% endfor %}
+          {% endif %}
         </ul>
 
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

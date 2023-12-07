@@ -64,7 +64,7 @@
 
                                 {% if user.is_authenticated %}
                                 <li id='comments-link' class="d-flex align-items-center">
-                                    <form id="like-form" action="{% url 'promociones:like_post' post.pk %}" method="POST">
+                                    <form id="like-form" action="{% url 'services:like_post' post.pk %}" method="POST">
                                         {% csrf_token %}
                                         <button type="submit" name="post_id" value="{{ post.id }}"
                                             class="btn btn-like {% if user in post.likes.all %} liked {% endif %} btn-sm">
@@ -81,8 +81,8 @@
                                 {% if user.id == post.author.id %}
 
                                 <li id='comments-link' class="d-flex align-items-center">
-                                    <a href="{% url 'promociones:update_post' post.pk %}"><i class="bi bi-pencil"></i></a>
-                                    <a href="{% url 'promociones:delete_post' post.pk %}"><i class="bi bi-trash"></i></a>
+                                    <a href="{% url 'services:update_post' post.pk %}"><i class="bi bi-pencil"></i></a>
+                                    <a href="{% url 'services:delete_post' post.pk %}"><i class="bi bi-trash"></i></a>
                                 </li>
                                 {% endif %}
 
@@ -162,7 +162,7 @@
                         <h4 class="comments-count">{{ post.comments.count }} Comments</h4>
 
                         {% if user.is_authenticated %}
-                        <a href="{% url 'promociones:add_comment' post.pk %}">Add Comment</a>
+                        <a href="{% url 'services:add_comment' post.pk %}">Add Comment</a>
                         <br><br>
                         {% endif %}
 
@@ -236,13 +236,13 @@
             
                             <div class="post-item">
                             {% if recent_post.header_image %}
-                            <a href="{% url 'promociones:article-detail' recent_post.pk %}">
+                            <a href="{% url 'services:article-detail' recent_post.pk %}">
                                 <img src="{{ recent_post.header_image.url }}" alt="..." class="flex-shrink-0">
                             </a>
                             {% endif %}
 
                               <div>
-                                <h4><a href="{% url 'promociones:article-detail' recent_post.pk %}">{{ recent_post.title }}</a></h4>
+                                <h4><a href="{% url 'services:article-detail' recent_post.pk %}">{{ recent_post.title }}</a></h4>
                                 <p class="post-date">{{ recent_post.post_date }}</p>
                               </div>
                             </div><!-- End recent post item-->

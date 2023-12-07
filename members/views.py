@@ -7,7 +7,7 @@ from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from .forms import SignUpForm, EditSettingForm, CustomPasswordChangeForm, ProfileForm
 from django.views.generic import DetailView, CreateView
-from promociones.models import Profile
+from .models import Profile
 from django.conf import settings
 
 class CreateProfileView(CreateView):

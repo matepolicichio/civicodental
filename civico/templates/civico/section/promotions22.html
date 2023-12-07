@@ -1,0 +1,154 @@
+{% load static %}
+<!-- Promotions Section - Home Page -->
+<section id="promociones" class="services">
+
+  <!--  Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Promociones</h2>
+    <p>¡Aprovecha estas oportunidades únicas y comienza tu camino hacia una salud bucal óptima y una sonrisa
+      deslumbrante hoy mismo!
+    </p>
+  </div><!-- End Section Title -->
+
+  {% if promotions_posts.all %}
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row gy-4 posts-list">
+
+      {% for post in promotions_posts %}
+
+      <div class="col-xl-4 col-md-6">
+        <article class="article">
+
+          {% if post.header_image %}
+          <div class="post-img">
+            <a href="{% url 'promociones:article-detail' post.pk %}">
+              <img src="{{ post.header_image.url }}" alt="..." class="img-fluid">
+            </a>
+          </div>
+          {% endif %}
+
+          <div class="d-flex align-items-center justify-content-between">
+
+            <p class="post-category">Sports</p>
+            {% if user.is_authenticated and user.id == post.author.id %}
+            <div>
+              <small>
+                <a href="{% url 'promociones:update_post' post.pk %}"><i class="bi bi-pencil"></i></a>
+                <a href="{% url 'promociones:delete_post' post.pk %}"><i class="bi bi-trash"></i></a>
+              </small>
+            </div>
+            {% endif %}
+          </div>
+
+          <h2 class="title">
+            <a href="{% url 'promociones:article-detail' post.pk %}">{{ post.title }}</a>
+          </h2>
+
+          <p class="post-category">{{ post.snippet }}</p>
+
+          <div class="d-flex align-items-center justify-content-start">
+
+            {% if post.author.profile and post.author.profile.profile_pic %}
+            <img src="{{ post.author.profile.profile_pic.url }}" alt="..."
+              class="img-fluid post-author-img flex-shrink-0">
+            {% else %}
+            <i class="bi bi-person" style="font-size: 2rem; margin-right: 10px; color: gray;"></i>
+            {% endif %}
+
+            <div class="post-meta">
+              <p class="post-author">{{ post.author.first_name }} {{ post.author.last_name }}</p>
+              <p class="post-date">{{ post.post_date }}</p>
+            </div>
+          </div>
+
+        </article>
+      </div><!-- End post list item -->
+
+      {% endfor %}
+
+    </div><!-- End blog posts list -->
+
+  </div>
+
+  <!-- End Blog Section -->
+  {% endif %}
+
+</section>
+
+
+
+{% comment %}
+<div class="container">
+
+  <div class="row gy-4">
+    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="service-item d-flex">
+        <div class="card">
+          <img src="../../static/civico/img/promociones/promocion1.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Coronas Dentales</h5>
+            <p class="card-text">Para corregir imperfecciones estéticas como manchas,
+              desgaste o fracturas.</p>
+            <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="service-item d-flex">
+        <div class="card">
+          <img src="../../static/civico/img/promociones/promocion2.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Limpieza Dental</h5>
+            <p class="card-text">Profunda, eliminando la placa y el sarro acumulados.</p>
+            <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="service-item d-flex">
+        <div class="card">
+          <img src="../../static/civico/img/promociones/promocion3.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Beneficios</h5>
+            <br>
+            <br>
+            <p class="card-text"></p>
+            <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="service-item d-flex">
+        <div class="card">
+          <img src="../../static/civico/img/promociones/promocion4.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Promoción</h5>
+            <p class="card-text">Para mantener una sonrisa radiante.</p>
+            <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="service-item d-flex">
+        <div class="card">
+          <img src="../../static/civico/img/promociones/promocion5.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Implantes Dentales</h5>
+            <p class="card-text">Para recuperar tu sonrisa completa y funcional.</p>
+            <!-- <a href="#" class="btn btn-primary">Ver más</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endcomment %}
+
+<!-- End Promotion Section -->

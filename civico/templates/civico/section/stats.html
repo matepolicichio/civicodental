@@ -1,6 +1,6 @@
 {% load static %}
 <!-- Stats Section - Home Page -->
-<section id="stats" class="stats">
+<section id="{{ section_selection.section.html_id }}" class="stats">
 
   <img src="{% static 'civico/img/stats-bg.jpg' %}" alt="" data-aos="fade-in">
 
@@ -44,4 +44,5 @@
 
   </div>
 
-</section><!-- End Stats Section -->
+</section>
+<!-- End Stats Section -->

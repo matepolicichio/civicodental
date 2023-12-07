@@ -16,58 +16,33 @@ def HomeView(request):
     nav_sections = SectionSelection.objects.filter(        
         nav_enabled = True,
         is_visible=True,
-        page__template_path='civico/index.html'
+        page__template_path=f'civico/index.html'
     )
 
     visible_sections = SectionSelection.objects.filter(
         is_visible=True,
-        page__template_path='promociones/home.html'
+        page__template_path=f'services/home.html'
     )
 
-    promo_posts = Post.objects.order_by('-post_date')
+    service_posts = Post.objects.order_by('-post_date')
     form = ContactForm()
 
-    enabled_promo_page_content = Page.objects.filter(is_enabled=True)
-    promo_page_random_content = None
-    if enabled_promo_page_content.exists():
-        promo_page_random_content = random.choice(enabled_promo_page_content)
+    enabled_service_page_content = Page.objects.filter(is_enabled=True)    
+    service_page_random_content = None
+    if enabled_service_page_content.exists():
+        service_page_random_content = random.choice(enabled_service_page_content)
 
     context = {
         'nav_sections': nav_sections,
         'visible_sections': visible_sections,
-        'posts': promo_posts,
-        'random_page': promo_page_random_content,
+        'promo_posts': service_posts,
+        'service_page_random_content': service_page_random_content,
         'form': form,
     }
 
-    template_name = 'promociones/home.html'
+    template_name = 'services/home.html'
 
     return render(request, template_name, context)
-
-
-# class HomeView(ListView):
-#     model = Post
-#     template_name = 'promociones/home.html'
-#     ordering = ['-post_date']
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['MEDIA_URL'] = settings.MEDIA_URL
-    #     return context
-
-
-
-# def LikeView(request, pk):
-#     print(request.POST)
-#     post = get_object_or_404(Post, id=request.POST.get('post_id'))
-#     print(post)
-
-#     if post.likes.filter(id=request.user.id).exists():
-#         post.likes.remove(request.user)
-#     else:
-#         post.likes.add(request.user)
-#     return HttpResponseRedirect(reverse('blog:article-detail', args=[str(pk)]))
-
 
 
 def LikeView(request, pk):
@@ -83,16 +58,16 @@ def LikeView(request, pk):
     return JsonResponse({'likes_count': likes_count})
 
 
-def ArticleDetailView(request, pk):
+def ArticleDetailView(request, pk):    
     nav_sections = SectionSelection.objects.filter(        
         nav_enabled = True,
         is_visible=True,
-        page__template_path='civico/index.html'
+        page__template_path=f'civico/index.html'
     )
 
     visible_sections = SectionSelection.objects.filter(
         is_visible=True,
-        page__template_path='promociones/article_details.html'
+        page__template_path='services/article_details.html'
     )
 
     post = get_object_or_404(Post, pk=pk)
@@ -114,25 +89,15 @@ def ArticleDetailView(request, pk):
         'tags': tags,
     }
 
-    template_name = 'promociones/article_details.html'
+    template_name = 'services/article_details.html'
 
     return render(request, template_name, context)
 
 
-
-# class ArticleDetailView(DetailView):
-#     model = Post
-#     template_name = 'promociones/article_details.html'
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['MEDIA_URL'] = settings.MEDIA_URL
-    #     return context
-
 class AddPostView(CreateView):
     model = Post
     form_class = PostForm
-    template_name = 'promociones/add_post.html'
+    template_name = 'services/add_post.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -141,7 +106,7 @@ class AddPostView(CreateView):
 class UpdatePostView(UpdateView):
     model = Post
     form_class = PostForm
-    template_name = 'promociones/update_post.html'
+    template_name = 'services/update_post.html'
 
     def form_valid(self, form):
         # Get the existing post object
@@ -174,15 +139,15 @@ class UpdatePostView(UpdateView):
 
 class DeletePostView(DeleteView):
     model = Post
-    template_name = 'promociones/delete_post.html'
-    success_url = reverse_lazy('promociones:home')
+    template_name = 'services/delete_post.html'
+    success_url = reverse_lazy('services:home')
 
 
 class AddCommentView(CreateView):
     model = Comment
     form_class = CommentForm
-    template_name = 'promociones/add_comment.html'
-    success_url = reverse_lazy('promociones:home')
+    template_name = 'services/add_comment.html'
+    success_url = reverse_lazy('services:home')
     
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']

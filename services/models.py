@@ -5,7 +5,7 @@ from datetime import datetime, date
 from ckeditor.fields import RichTextField
 
 class Page(models.Model):
-    name = models.CharField(max_length=255, default="Promociones")
+    name = models.CharField(max_length=255, default="Servicios")
     description = models.TextField(null=True, blank=True)
     is_enabled = models.BooleanField(default=True)
 
@@ -26,13 +26,13 @@ class Tag(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    header_image = models.ImageField(null=True, blank=True, upload_to="images/", default=None)
+    header_image = models.ImageField(null=True, blank=True, upload_to="images/services/", default=None)
     title_tag = models.CharField(max_length=255, default="Civico Dental")
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, related_name='service_author', on_delete=models.CASCADE) # change related_name to be unique
     body = RichTextField(blank=True, null=True)
     post_date = models.DateField(auto_now_add=True)
     snippet = models.CharField(max_length=255)
-    likes = models.ManyToManyField(User, related_name='blog_posts')
+    likes = models.ManyToManyField(User, related_name='services_posts') # change related_name to be unique
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True, related_name='articles')
     tags = models.ManyToManyField(Tag, blank=True)
 
@@ -40,7 +40,7 @@ class Post(models.Model):
         return self.title + ' | ' + str(self.author)
     
     def get_absolute_url(self):
-        return reverse('promociones:home')
+        return reverse('services:home')
 
 
 class Comment(models.Model):
