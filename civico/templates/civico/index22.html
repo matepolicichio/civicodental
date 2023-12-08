@@ -3,11 +3,9 @@
 
 <main id="main">
 
-{% if sections %}
-    {% for section_selection in sections %}
-        {% if section_selection.is_visible and section_selection.page.template_path == 'civico/index.html' %}
-            {% include section_selection.section.section_path %}
-        {% endif %}
+{% if visible_sections %}
+    {% for section_selection in visible_sections %}
+        {% include section_selection.section.section_path %}
     {% endfor %}
 {% endif %}
 

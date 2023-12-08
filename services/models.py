@@ -35,6 +35,7 @@ class Post(models.Model):
     likes = models.ManyToManyField(User, related_name='services_posts') # change related_name to be unique
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True, related_name='articles')
     tags = models.ManyToManyField(Tag, blank=True)
+    is_visible = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)

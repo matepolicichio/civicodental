@@ -17,14 +17,15 @@ def HomeView(request):
         nav_enabled = True,
         is_visible=True,
         page__template_path='civico/index.html'
-    )
+    )    
 
     visible_sections = SectionSelection.objects.filter(
         is_visible=True,
         page__template_path='promociones/home.html'
     )
 
-    promo_posts = Post.objects.order_by('-post_date')
+    sections = SectionSelection.objects.all
+    promo_posts = Post.objects.filter(is_visible=True).order_by('-post_date')
     form = ContactForm()
 
     enabled_promo_page_content = Page.objects.filter(is_enabled=True)
@@ -33,10 +34,11 @@ def HomeView(request):
         promo_page_random_content = random.choice(enabled_promo_page_content)
 
     context = {
+        'sections': sections,
         'nav_sections': nav_sections,
         'visible_sections': visible_sections,
-        'posts': promo_posts,
-        'random_page': promo_page_random_content,
+        'promo_posts': promo_posts,
+        'promo_page_random_content': promo_page_random_content,
         'form': form,
     }
 

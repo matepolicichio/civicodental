@@ -1,18 +1,5 @@
 <section id="{{ section_selection.section.html_id }}" class="blog">
 
-    <!-- <div data-aos="fade" class="page-title">
-            <div class="heading">
-                <div class="container">
-                    <div class="row d-flex justify-content-center text-center">
-                        <div class="col-lg-8">
-                            <h1>Promociones</h1>
-                            <p class="mb-0">A continuación se muestran las promociones vigentes.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
     <div class="container section-title" data-aos="fade-up">
         {% if promo_page_random_content %}
         <h2>{{ promo_page_random_content.name }}</h2>
@@ -47,7 +34,7 @@
                     <div class="d-flex align-items-center justify-content-between">
 
                         <p class="post-category">{{ post.category }}</p>
-                        {% if user.is_authenticated and user.id == post.author.id %}
+                        {% if user.is_authenticated and user.is_staff %}
                         <div>
                             <small>
                                 <a href="{% url 'promociones:update_post' post.pk %}"><i class="bi bi-pencil"></i></a>
@@ -84,15 +71,6 @@
             {% endfor %}
 
         </div>
-
-        <!-- <div class="pagination d-flex justify-content-center">
-            <ul>
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-            </ul>
-        </div> -->
-
     </div>
     {% endif %}
 </section>

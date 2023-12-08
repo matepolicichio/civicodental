@@ -20,7 +20,9 @@ def index(request):
         page__template_path='civico/index.html'
     )
     
-    promo_posts = PromoPost.objects.order_by('-post_date')
+    sections = SectionSelection.objects.all
+
+    promo_posts = PromoPost.objects.filter(is_visible=True).order_by('-post_date')
     service_posts = ServicePost.objects.order_by('-post_date')
 
     enabled_promo_page_content = PromoPage.objects.filter(is_enabled=True)
@@ -42,6 +44,7 @@ def index(request):
         form = ContactForm()
 
     context = {
+        'sections':sections,
         'nav_sections': nav_sections,
         'visible_sections': visible_sections,
         'promo_posts': promo_posts,

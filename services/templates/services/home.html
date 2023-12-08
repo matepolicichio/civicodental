@@ -9,9 +9,12 @@ class="blog-page" data-bs-spy="scroll" data-bs-target="#navmenu"
 
 <main id="main">
 
-{% if visible_sections %}
-    {% for section_selection in visible_sections %}
-        {% include section_selection.section.section_path %}
+<br><br><br>
+{% if sections %}
+    {% for section_selection in sections %}
+        {% if section_selection.is_visible and section_selection.page.template_path == 'services/home.html' %}
+            {% include section_selection.section.section_path %}
+        {% endif %}
     {% endfor %}
 {% endif %}
 
