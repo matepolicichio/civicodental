@@ -26,8 +26,11 @@ SECRET_KEY = 'django-insecure-5e6jkh*!jp^s262aj=y#f8ty7wefaa&1s%4u)7r#&u_#t)1%y(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'civicodentalcaremexicali.com']
-CSRF_TRUSTED_ORIGINS = ['https://civicodentalcaremexicali.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'civico.ingenios.com.ar']
+CSRF_TRUSTED_ORIGINS = ['https://civico.ingenios.com.ar']
+
+# ALLOWED_HOSTS = ['127.0.0.1', 'civicodentalcaremexicali.com']
+# CSRF_TRUSTED_ORIGINS = ['https://civicodentalcaremexicali.com']
 
 
 # Application definition
@@ -91,7 +94,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'civicodental',
-        'USER': 'root',
+        'USER': 'django',
         'PASSWORD': 'MySQL#10!',
         'HOST': 'localhost',
         'PORT': '3306',
@@ -143,5 +146,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'promociones:home'
-LOGOUT_REDIRECT_URL = 'promociones:home'
+LOGIN_REDIRECT_URL = 'civico:index'
+LOGOUT_REDIRECT_URL = 'civico:index'
