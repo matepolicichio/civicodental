@@ -1,8 +1,9 @@
 # Ignore Python cache folders
 __pycache__/
 
-# Ignore Django migrations
-/*/migrations/
+# Ignore all files in the migrations directory except for __init__.py
+*/migrations/*
+!*/migrations/__init__.py
+
 /media/
-civico/migrations/0001_initial.py
-civico/migrations/0001_initial.py
+
