@@ -2,7 +2,7 @@
 
     <div class="container section-title" data-aos="fade-up">
         {% if promo_page_random_content %}
-        <h2>{{ promo_page_random_content.name }}</h2>
+        <a href="{% url 'promociones:home' %}"><h2>{{ promo_page_random_content.name }}</h2></a>
         <p>{{ promo_page_random_content.description }}</p>
         {% endif %}
     </div>

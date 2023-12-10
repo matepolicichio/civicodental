@@ -13,16 +13,6 @@ import random
 
 
 def HomeView(request):
-    # nav_sections = SectionSelection.objects.filter(        
-    #     nav_enabled = True,
-    #     is_visible=True,
-    #     page__template_path='civico/index.html'
-    # )    
-
-    # visible_sections = SectionSelection.objects.filter(
-    #     is_visible=True,
-    #     page__template_path='promociones/home.html'
-    # )
 
     sections = SectionSelection.objects.all
     promo_posts = Post.objects.filter(is_visible=True).order_by('-post_date')
@@ -47,31 +37,6 @@ def HomeView(request):
     return render(request, template_name, context)
 
 
-# class HomeView(ListView):
-#     model = Post
-#     template_name = 'promociones/home.html'
-#     ordering = ['-post_date']
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['MEDIA_URL'] = settings.MEDIA_URL
-    #     return context
-
-
-
-# def LikeView(request, pk):
-#     print(request.POST)
-#     post = get_object_or_404(Post, id=request.POST.get('post_id'))
-#     print(post)
-
-#     if post.likes.filter(id=request.user.id).exists():
-#         post.likes.remove(request.user)
-#     else:
-#         post.likes.add(request.user)
-#     return HttpResponseRedirect(reverse('blog:article-detail', args=[str(pk)]))
-
-
-
 def LikeView(request, pk):
     post = get_object_or_404(Post, id=request.POST.get('post_id'))
     if post.likes.filter(id=request.user.id).exists():
@@ -86,17 +51,8 @@ def LikeView(request, pk):
 
 
 def ArticleDetailView(request, pk):
-    nav_sections = SectionSelection.objects.filter(        
-        nav_enabled = True,
-        is_visible=True,
-        page__template_path='civico/index.html'
-    )
 
-    visible_sections = SectionSelection.objects.filter(
-        is_visible=True,
-        page__template_path='promociones/article_details.html'
-    )
-
+    sections = SectionSelection.objects.all
     post = get_object_or_404(Post, pk=pk)
     posts = Post.objects.order_by('-post_date')
     form = ContactForm()
@@ -105,31 +61,27 @@ def ArticleDetailView(request, pk):
     category_counts = {category.name: category.articles.count() for category in categories}
     
     tags = Tag.objects.all()
+
+    enabled_promo_page_content = Page.objects.filter(is_enabled=True)    
+    promo_page_random_content = None
+    if enabled_promo_page_content.exists():
+        promo_page_random_content = random.choice(enabled_promo_page_content)
+
     
     context = {
-        'nav_sections': nav_sections,
-        'visible_sections': visible_sections,
+        'sections': sections,
         'post': post,
         'posts': posts,
         'form': form,
         'category_counts': category_counts,
         'tags': tags,
+        'promo_page_random_content': promo_page_random_content,   
     }
 
     template_name = 'promociones/article_details.html'
 
     return render(request, template_name, context)
 
-
-
-# class ArticleDetailView(DetailView):
-#     model = Post
-#     template_name = 'promociones/article_details.html'
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['MEDIA_URL'] = settings.MEDIA_URL
-    #     return context
 
 class AddPostView(CreateView):
     model = Post

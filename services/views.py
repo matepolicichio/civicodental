@@ -13,16 +13,6 @@ import random
 
 
 def HomeView(request):
-    # nav_sections = SectionSelection.objects.filter(        
-    #     nav_enabled = True,
-    #     is_visible=True,
-    #     page__template_path=f'civico/index.html'
-    # )
-
-    # visible_sections = SectionSelection.objects.filter(
-    #     is_visible=True,
-    #     page__template_path=f'services/home.html'
-    # )
 
     sections = SectionSelection.objects.all
     service_posts = Post.objects.order_by('-post_date')
@@ -61,17 +51,8 @@ def LikeView(request, pk):
 
 
 def ArticleDetailView(request, pk):    
-    nav_sections = SectionSelection.objects.filter(        
-        nav_enabled = True,
-        is_visible=True,
-        page__template_path=f'civico/index.html'
-    )
 
-    visible_sections = SectionSelection.objects.filter(
-        is_visible=True,
-        page__template_path='services/article_details.html'
-    )
-
+    sections = SectionSelection.objects.all
     post = get_object_or_404(Post, pk=pk)
     posts = Post.objects.order_by('-post_date')
     form = ContactForm()
@@ -80,15 +61,21 @@ def ArticleDetailView(request, pk):
     category_counts = {category.name: category.articles.count() for category in categories}
     
     tags = Tag.objects.all()
-    
+
+    enabled_service_page_content = Page.objects.filter(is_enabled=True)    
+    service_page_random_content = None
+    if enabled_service_page_content.exists():
+        service_page_random_content = random.choice(enabled_service_page_content)
+
+
     context = {
-        'nav_sections': nav_sections,
-        'visible_sections': visible_sections,
+        'sections': sections,
         'post': post,
         'posts': posts,
         'form': form,
         'category_counts': category_counts,
         'tags': tags,
+        'service_page_random_content': service_page_random_content,   
     }
 
     template_name = 'services/article_details.html'

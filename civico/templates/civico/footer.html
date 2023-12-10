@@ -23,9 +23,11 @@
         <div class="col-lg-2 col-6 footer-links">
           <h4>Links más usados</h4>
           <ul>
-            {% if nav_sections %}
-            {% for nav in nav_sections %}
+            {% if sections %}
+            {% for nav in sections %}
+            {% if nav.is_visible and nav.nav_enabled and nav.page.template_path == 'civico/index.html' %}
               <li><a href="{% url 'civico:index' %}#{{ nav.section.html_id }}">{{ nav.section.name }}</a></li>
+            {% endif %}
             {% endfor %}
             {% endif %}
           </ul>
@@ -34,11 +36,11 @@
         <div class="col-lg-2 col-6 footer-links">
           <h4>Nuestros servicios</h4>
           <ul>
-            <li><a href="#services">Restauraciones</a></li>
-            <li><a href="#services">Ortodoncia</a></li>
-            <li><a href="#services">Implantes</a></li>
-            <li><a href="#services">Blanqueamientos</a></li>
-            <li><a href="#services">Limpieza dental</a></li>
+            {% if service_posts %}
+            {% for service in service_posts %}
+            <li><a href="{% url 'services:article-detail' service.pk %}">{{ service.title }}</a></li>
+            {% endfor %}
+            {% endif %}
           </ul>
         </div>
 

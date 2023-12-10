@@ -230,7 +230,12 @@
 
                         
                         <div class="sidebar-item recent-posts">
-                            <h3 class="sidebar-title">Promociones</h3>
+                            
+                            {% if service_page_random_content %}
+                            <a href="{% url 'services:home' %}"><h3 class="sidebar-title">{{ service_page_random_content.name }}</h3></a>
+                            <p>{{ service_page_random_content.description }}</p>
+                            {% endif %}
+                            
                             {% if posts.all %}
                             {% for recent_post in posts %}
             
