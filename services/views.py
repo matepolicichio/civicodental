@@ -24,7 +24,7 @@ def HomeView(request):
     #     page__template_path=f'services/home.html'
     # )
 
-    sections = SectionSelection.objects.all    
+    sections = SectionSelection.objects.all
     service_posts = Post.objects.order_by('-post_date')
     form = ContactForm()
 
