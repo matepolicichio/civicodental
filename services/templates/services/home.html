@@ -12,11 +12,6 @@ class="blog-page" data-bs-spy="scroll" data-bs-target="#navmenu"
 <br><br><br>
 {% if sections %}
     {% for section_selection in sections %}
-        {{ section }} <br>
-        {{ section_selection.is_visible }} <br>
-        {{ section_selection.page.template_path }} <br>
-        {{ section_selection.section.section_path }} <br>
-        
         {% if section_selection.is_visible and section_selection.page.template_path == 'services/home.html' %}
             {% include section_selection.section.section_path %}
         {% endif %}
