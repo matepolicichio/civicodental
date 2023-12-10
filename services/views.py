@@ -13,17 +13,18 @@ import random
 
 
 def HomeView(request):
-    nav_sections = SectionSelection.objects.filter(        
-        nav_enabled = True,
-        is_visible=True,
-        page__template_path=f'civico/index.html'
-    )
+    # nav_sections = SectionSelection.objects.filter(        
+    #     nav_enabled = True,
+    #     is_visible=True,
+    #     page__template_path=f'civico/index.html'
+    # )
 
-    visible_sections = SectionSelection.objects.filter(
-        is_visible=True,
-        page__template_path=f'services/home.html'
-    )
+    # visible_sections = SectionSelection.objects.filter(
+    #     is_visible=True,
+    #     page__template_path=f'services/home.html'
+    # )
 
+    sections = SectionSelection.objects.all    
     service_posts = Post.objects.order_by('-post_date')
     form = ContactForm()
 
@@ -33,9 +34,10 @@ def HomeView(request):
         service_page_random_content = random.choice(enabled_service_page_content)
 
     context = {
-        'nav_sections': nav_sections,
-        'visible_sections': visible_sections,
-        'promo_posts': service_posts,
+        'sections': sections,
+        # 'nav_sections': nav_sections,
+        # 'visible_sections': visible_sections,
+        'service_posts': service_posts,
         'service_page_random_content': service_page_random_content,
         'form': form,
     }

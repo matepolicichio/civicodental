@@ -13,16 +13,16 @@ import random
 
 
 def HomeView(request):
-    nav_sections = SectionSelection.objects.filter(        
-        nav_enabled = True,
-        is_visible=True,
-        page__template_path='civico/index.html'
-    )    
+    # nav_sections = SectionSelection.objects.filter(        
+    #     nav_enabled = True,
+    #     is_visible=True,
+    #     page__template_path='civico/index.html'
+    # )    
 
-    visible_sections = SectionSelection.objects.filter(
-        is_visible=True,
-        page__template_path='promociones/home.html'
-    )
+    # visible_sections = SectionSelection.objects.filter(
+    #     is_visible=True,
+    #     page__template_path='promociones/home.html'
+    # )
 
     sections = SectionSelection.objects.all
     promo_posts = Post.objects.filter(is_visible=True).order_by('-post_date')
@@ -35,8 +35,8 @@ def HomeView(request):
 
     context = {
         'sections': sections,
-        'nav_sections': nav_sections,
-        'visible_sections': visible_sections,
+        # 'nav_sections': nav_sections,
+        # 'visible_sections': visible_sections,
         'promo_posts': promo_posts,
         'promo_page_random_content': promo_page_random_content,
         'form': form,

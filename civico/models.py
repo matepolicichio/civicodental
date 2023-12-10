@@ -12,8 +12,6 @@ class Section(models.Model):
         ('civico/section/features.html', 'main - distintivos'),
         ('civico/section/hero.html', 'main - hero'),
         ('civico/section/portfolio.html', 'main - experiencia'),
-        ('civico/section/promotions.html', 'main - promociones'),
-        ('civico/section/services.html', 'main - servicios'),
         ('civico/section/stats.html', 'main - estadísticas'),
         ('civico/section/team.html', 'main - equipo'),
         ('civico/section/testimonials.html', 'main - testimonios'),

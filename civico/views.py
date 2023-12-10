@@ -9,19 +9,18 @@ import random
 
 # Create your views here.
 def index(request):
-    nav_sections = SectionSelection.objects.filter(        
-        nav_enabled = True,
-        is_visible=True,
-        page__template_path='civico/index.html'
-    )
+    # nav_sections = SectionSelection.objects.filter(        
+    #     nav_enabled = True,
+    #     is_visible=True,
+    #     page__template_path='civico/index.html'
+    # )
 
-    visible_sections = SectionSelection.objects.filter(
-        is_visible=True,
-        page__template_path='civico/index.html'
-    )
+    # visible_sections = SectionSelection.objects.filter(
+    #     is_visible=True,
+    #     page__template_path='civico/index.html'
+    # )
     
     sections = SectionSelection.objects.all
-
     promo_posts = PromoPost.objects.filter(is_visible=True).order_by('-post_date')
     service_posts = ServicePost.objects.order_by('-post_date')
 
@@ -45,8 +44,8 @@ def index(request):
 
     context = {
         'sections':sections,
-        'nav_sections': nav_sections,
-        'visible_sections': visible_sections,
+        # 'nav_sections': nav_sections,
+        # 'visible_sections': visible_sections,
         'promo_posts': promo_posts,
         'service_posts': service_posts,
         'promo_page_random_content': promo_page_random_content,
