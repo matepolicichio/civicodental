@@ -31,7 +31,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, related_name='service_author', on_delete=models.CASCADE) # change related_name to be unique
     body = RichTextField(blank=True, null=True)
     post_date = models.DateField(auto_now_add=True)
-    snippet = models.CharField(max_length=255)
+    snippet = models.CharField(max_length=255, null=True, blank=True)
     likes = models.ManyToManyField(User, related_name='services_posts') # change related_name to be unique
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True, related_name='articles')
     tags = models.ManyToManyField(Tag, blank=True)

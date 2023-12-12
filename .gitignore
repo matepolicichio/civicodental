@@ -7,3 +7,5 @@ __pycache__/
 
 /media/
 
+civico/templates/civico/section/promotions22.html
+civico/templates/civico/section/services22.html

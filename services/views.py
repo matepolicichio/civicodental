@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Comment, Category, Tag, Page
 from civico.models import SectionSelection
-from .forms import PostForm, EditForm, CommentForm
+from .forms import PostForm
 from civico.forms import ContactForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponse, HttpResponseRedirect
@@ -130,15 +130,3 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = 'services/delete_post.html'
     success_url = reverse_lazy('services:home')
-
-
-class AddCommentView(CreateView):
-    model = Comment
-    form_class = CommentForm
-    template_name = 'services/add_comment.html'
-    success_url = reverse_lazy('services:home')
-    
-    def form_valid(self, form):
-        form.instance.post_id = self.kwargs['pk']
-        return super().form_valid(form)
-

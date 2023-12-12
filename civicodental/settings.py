@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'promociones',
     'services',
     'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +149,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'civico:index'
 LOGOUT_REDIRECT_URL = 'civico:index'
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': [
+            ['Bold', 'Italic', 'Underline', 'Strike', 'FontSize'],
+            ['NumberedList', 'BulletedList', 'Blockquote'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink', 'Image', 'Table'],
+            ['TextColor', 'BGColor'],
+            ['RemoveFormat', 'Source'],
+        ],
+        'height': 300,
+        'width': '100%',
+    },
+}
