@@ -21,7 +21,7 @@
           {% if nav.is_visible and nav.nav_enabled and nav.page.template_path == 'civico/index.html' %}
 
           <li><a href="{% url 'civico:index' %}#{{ nav.section.html_id }}">{{ nav.section.name }}</a></li>
-          
+
           {% endif %}
           {% endfor %}
           {% endif %}

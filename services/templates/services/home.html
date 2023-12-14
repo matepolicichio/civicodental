@@ -1,5 +1,5 @@
 {% extends 'civico/base.html' %}
-{% block title %}Promociones{% endblock %}
+{% block title %}{{ service.name }}{% endblock %}
 
 {% block body_class %}
 class="blog-page" data-bs-spy="scroll" data-bs-target="#navmenu"
@@ -12,9 +12,7 @@ class="blog-page" data-bs-spy="scroll" data-bs-target="#navmenu"
 <br><br><br>
 {% if sections %}
     {% for section_selection in sections %}
-        {% if section_selection.is_visible and section_selection.page.template_path == 'services/home.html' %}
-            {% include section_selection.section.section_path %}
-        {% endif %}
+        {% include section_selection.section.section_path %}
     {% endfor %}
 {% endif %}
 

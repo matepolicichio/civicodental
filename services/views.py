@@ -1,22 +1,32 @@
 import os
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Comment, Category, Tag, Page
-from civico.models import SectionSelection
+from .models import Post, Comment, Category, Tag, Page, SectionSelection, CallToAction
 from .forms import PostForm
-from civico.forms import ContactForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 # from django.conf import settings
 from django.http import JsonResponse
 import random
+from random import choice
 
 
 def HomeView(request):
 
-    sections = SectionSelection.objects.all
-    service_posts = Post.objects.order_by('-post_date')
-    form = ContactForm()
+    template_path_filter = 'services/home.html'
+
+    sections = SectionSelection.objects.filter(
+        is_visible=True,
+        page__template_path=template_path_filter)
+    
+    service_posts = Post.objects.filter(post_is_visible=True).order_by('-post_date')
+    
+    # Filter posts where calltoaction.is_enabled is True
+    posts_with_enabled_calltoaction = service_posts.filter(calltoaction_is_mainpage_enabled=True)
+
+    # Select a random post from the filtered queryset
+    random_post = choice(posts_with_enabled_calltoaction) if posts_with_enabled_calltoaction.exists() else None
+
 
     enabled_service_page_content = Page.objects.filter(is_enabled=True)    
     service_page_random_content = None
@@ -25,11 +35,9 @@ def HomeView(request):
 
     context = {
         'sections': sections,
-        # 'nav_sections': nav_sections,
-        # 'visible_sections': visible_sections,
         'service_posts': service_posts,
-        'service_page_random_content': service_page_random_content,
-        'form': form,
+        'post': random_post,
+        'service': service_page_random_content,
     }
 
     template_name = 'services/home.html'
@@ -50,12 +58,15 @@ def LikeView(request, pk):
     return JsonResponse({'likes_count': likes_count})
 
 
-def ArticleDetailView(request, pk):    
+def ArticleDetailView(request, pk):
+    template_path_filter = 'services/article_details.html'
 
-    sections = SectionSelection.objects.all
+    sections = SectionSelection.objects.filter(
+        is_visible=True,
+        page__template_path=template_path_filter)
+
     post = get_object_or_404(Post, pk=pk)
-    posts = Post.objects.order_by('-post_date')
-    form = ContactForm()
+    service_posts = Post.objects.order_by('-post_date')
 
     categories = Category.objects.all()
     category_counts = {category.name: category.articles.count() for category in categories}
@@ -67,15 +78,13 @@ def ArticleDetailView(request, pk):
     if enabled_service_page_content.exists():
         service_page_random_content = random.choice(enabled_service_page_content)
 
-
     context = {
         'sections': sections,
         'post': post,
-        'posts': posts,
-        'form': form,
+        'service_posts': service_posts,
         'category_counts': category_counts,
         'tags': tags,
-        'service_page_random_content': service_page_random_content,   
+        'service': service_page_random_content,
     }
 
     template_name = 'services/article_details.html'

@@ -1,0 +1,30 @@
+{% load static %}
+
+<!-- Call-to-action Section - Home Page -->
+{% if post %}
+<section id="{{ section_selection.section.html_id }}" class="call-to-action">
+
+  {% if post.calltoaction.background_image %}
+  <img src="{{ post.calltoaction.background_image.url }}" alt="...">
+  {% else %}
+  <img src="{% static 'civico/img/call2action.jpg' %}" alt="">
+  {% endif %}
+
+  <div class="container">
+    <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+      <div class="col-xl-10">
+        <div class="text-center">
+          <h3>{{ post.calltoaction.title }}</h3>
+          <p>{{ post.calltoaction.description }}</p>
+            <a href="https://api.whatsapp.com/send?phone={{ post.calltoaction.whatsapp_number }}&text={{ post.calltoaction.whatsapp_message }}"
+              class="cta-btn" target="_blank"><i class="bi bi-whatsapp"></i> {{ post.calltoaction.btn_text }}</a>
+            <!-- <a class="cta-btn" href="{% url 'civico:index' %}#contact">Agenda tu cita!</a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+{% endif %}
+
+<!-- End Call-to-action Section -->

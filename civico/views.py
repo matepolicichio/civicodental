@@ -37,7 +37,7 @@ def index(request):
         'promo_posts': promo_posts,
         'service_posts': service_posts,
         'promo_page_random_content': promo_page_random_content,
-        'service_page_random_content': service_page_random_content,        
+        'service': service_page_random_content,        
         'form': form,
     }
 
