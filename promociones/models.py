@@ -4,6 +4,8 @@ from django.urls import reverse
 from datetime import datetime, date
 from ckeditor.fields import RichTextField
 
+from calltoaction.models import CallToAction as Call2Action
+
 from django.core.exceptions import ValidationError
 
 # class SectionList(models.Model):
@@ -108,9 +110,11 @@ class Post(models.Model):
     likes = models.ManyToManyField(User, related_name='promociones_posts_likes')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True, related_name='articles')
     tags = models.ManyToManyField(Tag, blank=True)
-    calltoaction = models.ForeignKey(CallToAction, on_delete=models.CASCADE, null=True, blank=True, related_name='call2action')
+    calltoaction = models.ForeignKey(CallToAction, on_delete=models.CASCADE, null=True, blank=True)
     calltoaction_is_mainpage_enabled = models.BooleanField(default=False)
     post_is_visible = models.BooleanField(default=True)
+
+    call2action = models.ForeignKey(Call2Action, on_delete=models.CASCADE, null=True, blank=True, related_name='promo_call2action')
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)

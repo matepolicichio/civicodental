@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Category, Tag, Page, CallToAction
+from .models import Post, Category, Tag, Page
 
 
 admin.site.register(Category)
@@ -10,12 +10,6 @@ class PageAdmin(admin.ModelAdmin):
         return [field.name for field in Page._meta.fields]
 
 admin.site.register(Page, PageAdmin)
-
-class CallToActionAdmin(admin.ModelAdmin):
-    def get_list_display(self, request):
-        return [field.name for field in CallToAction._meta.fields]
-
-admin.site.register(CallToAction, CallToActionAdmin)
 
 class PostAdmin(admin.ModelAdmin):
     def get_list_display(self, request):
