@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'promociones',
     'services',
     'ckeditor',
-    'ckeditor_uploader',
+    'calltoaction',
+    'sectionselection',
 ]
 
 MIDDLEWARE = [

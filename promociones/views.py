@@ -1,22 +1,32 @@
 import os
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Comment, Category, Tag, Page
-from civico.models import SectionSelection
-from .forms import PostForm, EditForm, CommentForm
-from civico.forms import ContactForm
+from .models import Post, Category, Tag, Page
+from sectionselection.models import SectionSelection
+from .forms import PostForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 # from django.conf import settings
 from django.http import JsonResponse
 import random
+from random import choice
 
 
 def HomeView(request):
 
-    sections = SectionSelection.objects.all
-    promo_posts = Post.objects.filter(is_visible=True).order_by('-post_date')
-    form = ContactForm()
+    template_path_filter = 'promociones/home.html'
+
+    sections = SectionSelection.objects.filter(
+        is_visible=True,
+        page__template_path=template_path_filter)
+    
+    promo_posts = Post.objects.filter(post_is_visible=True).order_by('-post_date')
+    
+    # Filter posts where calltoaction.is_enabled is True
+    posts_with_enabled_calltoaction = promo_posts.filter(calltoaction__isnull=False, calltoaction_is_mainpage_enabled=True)
+
+    # Select a random post from the filtered queryset
+    random_post = choice(posts_with_enabled_calltoaction) if posts_with_enabled_calltoaction.exists() else None
 
     enabled_promo_page_content = Page.objects.filter(is_enabled=True)
     promo_page_random_content = None
@@ -25,11 +35,9 @@ def HomeView(request):
 
     context = {
         'sections': sections,
-        # 'nav_sections': nav_sections,
-        # 'visible_sections': visible_sections,
         'promo_posts': promo_posts,
-        'promo_page_random_content': promo_page_random_content,
-        'form': form,
+        'post': random_post,
+        'promo_page_content': promo_page_random_content,        
     }
 
     template_name = 'promociones/home.html'
@@ -51,11 +59,14 @@ def LikeView(request, pk):
 
 
 def ArticleDetailView(request, pk):
+    template_path_filter = 'promociones/article_details.html'
 
-    sections = SectionSelection.objects.all
+    sections = SectionSelection.objects.filter(
+        is_visible=True,
+        page__template_path=template_path_filter)
+
     post = get_object_or_404(Post, pk=pk)
-    posts = Post.objects.order_by('-post_date')
-    form = ContactForm()
+    promo_posts = Post.objects.order_by('-post_date')
 
     categories = Category.objects.all()
     category_counts = {category.name: category.articles.count() for category in categories}
@@ -67,15 +78,13 @@ def ArticleDetailView(request, pk):
     if enabled_promo_page_content.exists():
         promo_page_random_content = random.choice(enabled_promo_page_content)
 
-    
     context = {
         'sections': sections,
         'post': post,
-        'posts': posts,
-        'form': form,
+        'promo_posts': promo_posts,
         'category_counts': category_counts,
         'tags': tags,
-        'promo_page_random_content': promo_page_random_content,   
+        'promo_page_content': promo_page_random_content,
     }
 
     template_name = 'promociones/article_details.html'
@@ -130,15 +139,3 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = 'promociones/delete_post.html'
     success_url = reverse_lazy('promociones:home')
-
-
-class AddCommentView(CreateView):
-    model = Comment
-    form_class = CommentForm
-    template_name = 'promociones/add_comment.html'
-    success_url = reverse_lazy('promociones:home')
-    
-    def form_valid(self, form):
-        form.instance.post_id = self.kwargs['pk']
-        return super().form_valid(form)
-

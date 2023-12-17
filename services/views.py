@@ -1,7 +1,7 @@
 import os
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Comment, Category, Tag, Page, SectionSelection, CallToAction
+from .models import Post, Category, Tag, Page, SectionSelection, CallToAction
 from .forms import PostForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponse, HttpResponseRedirect
@@ -22,11 +22,10 @@ def HomeView(request):
     service_posts = Post.objects.filter(post_is_visible=True).order_by('-post_date')
     
     # Filter posts where calltoaction.is_enabled is True
-    posts_with_enabled_calltoaction = service_posts.filter(calltoaction_is_mainpage_enabled=True)
+    posts_with_enabled_calltoaction = service_posts.filter(calltoaction__isnull=False, calltoaction_is_mainpage_enabled=True)
 
     # Select a random post from the filtered queryset
     random_post = choice(posts_with_enabled_calltoaction) if posts_with_enabled_calltoaction.exists() else None
-
 
     enabled_service_page_content = Page.objects.filter(is_enabled=True)    
     service_page_random_content = None
@@ -37,7 +36,7 @@ def HomeView(request):
         'sections': sections,
         'service_posts': service_posts,
         'post': random_post,
-        'service': service_page_random_content,
+        'service_page_content': service_page_random_content,
     }
 
     template_name = 'services/home.html'
@@ -84,7 +83,7 @@ def ArticleDetailView(request, pk):
         'service_posts': service_posts,
         'category_counts': category_counts,
         'tags': tags,
-        'service': service_page_random_content,
+        'service_page_content': service_page_random_content,
     }
 
     template_name = 'services/article_details.html'

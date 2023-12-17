@@ -1,6 +1,5 @@
 from django import forms
-from .models import Post, Comment
-from ckeditor.widgets import CKEditorWidget
+from .models import Post
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -14,7 +13,7 @@ class PostForm(forms.ModelForm):
                   'tags',
                   'calltoaction',
                   'calltoaction_is_mainpage_enabled',
-                  'post_is_visible')
+                  'post_is_visible',)
     
         widgets = {
             'header_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),

@@ -1,9 +1,8 @@
 <section id="{{ section_selection.section.html_id }}" class="blog">
-
     <div class="container section-title" data-aos="fade-up">
-        {% if promo_page_random_content %}
-        <a href="{% url 'promociones:home' %}"><h2>{{ promo_page_random_content.name }}</h2></a>
-        <p>{{ promo_page_random_content.description }}</p>
+        {% if promo_page_content %}
+        <a href="{% url 'promociones:home' %}"><h2>{{ promo_page_content.name }}</h2></a>
+        <p>{{ promo_page_content.description }}</p>
         {% endif %}
     </div>
 

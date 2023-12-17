@@ -226,18 +226,15 @@
                 <div class="col-lg-4">
 
                     <div class="sidebar">
-
-
-                        
                         <div class="sidebar-item recent-posts">
                             
-                            {% if promo_page_random_content %}
-                            <a href="{% url 'promociones:home' %}"><h3 class="sidebar-title">{{ promo_page_random_content.name }}</h3></a>
-                            <p class="mt-3">{{ promo_page_random_content.description }}</p>
+                            {% if promo_page_content %}
+                            <a href="{% url 'promociones:home' %}"><h3 class="sidebar-title">{{ promo_page_content.name }}</h3></a>
+                            <p class="mt-3">{{ promo_page_content.description }}</p>
                             {% endif %}                            
                             
-                            {% if posts.all %}
-                            {% for recent_post in posts %}
+                            {% if promo_posts.all %}
+                            {% for recent_post in promo_posts %}
             
                             <div class="post-item">
                             {% if recent_post.header_image %}
@@ -296,9 +293,7 @@
 
     {% if sections %}
     {% for section_selection in sections %}
-        {% if section_selection.is_visible and section_selection.page.template_path == 'promociones/article_details.html' %}
-            {% include section_selection.section.section_path %}
-        {% endif %}
+        {% include section_selection.section.section_path %}
     {% endfor %}
     {% endif %}
 

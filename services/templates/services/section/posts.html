@@ -1,9 +1,9 @@
 <section id="{{ section_selection.section.html_id }}" class="blog">
 
     <div class="container section-title" data-aos="fade-up">
-        {% if service %}
-        <a href="{% url 'services:home' %}"><h2>{{ service.name }}</h2></a>
-        <p>{{ service.description }}</p>
+        {% if service_page_content %}
+        <a href="{% url 'services:home' %}"><h2>{{ service_page_content.name }}</h2></a>
+        <p>{{ service_page_content.description }}</p>
         {% endif %}
     </div>
 

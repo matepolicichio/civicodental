@@ -1,10 +1,9 @@
 from django.contrib import admin
-from .models import Post, Comment, Category, Tag, Page, CallToAction, PageList, SectionList, SectionSelection
+from .models import Post, Category, Tag, Page, CallToAction, PageList, SectionList, SectionSelection
 
-admin.site.register(Comment)
+
 admin.site.register(Category)
 admin.site.register(Tag)
-
 
 class PageListAdmin(admin.ModelAdmin):
     def get_list_display(self, request):

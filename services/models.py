@@ -4,10 +4,9 @@ from django.urls import reverse
 from datetime import datetime, date
 from ckeditor.fields import RichTextField
 
+from calltoaction.models import CallToAction as Call2Action
+
 from django.core.exceptions import ValidationError
-from django.core.validators import RegexValidator
-
-
 
 class SectionList(models.Model):
     SECTION_CHOICES = [
@@ -15,7 +14,7 @@ class SectionList(models.Model):
         ('services/section/call2action.html', 'servicios - call to action'),
     ]
 
-    name = models.CharField(max_length=255, default="_")
+    name = models.CharField(max_length=255)
     html_id = models.CharField(max_length=255, unique=True)
     section_path = models.CharField(max_length=255, choices=SECTION_CHOICES, unique=True)
 
@@ -38,7 +37,7 @@ class PageList(models.Model):
         ('services/article_details.html', 'servicios - detalle'),
     ]
 
-    name = models.CharField(max_length=255, default="_")
+    name = models.CharField(max_length=255)
     template_path = models.CharField(max_length=255, choices=TEMPLATE_CHOICES, unique=True)
     section_selection = models.ManyToManyField(SectionList, through='SectionSelection')
 
@@ -81,13 +80,15 @@ class CallToAction(models.Model):
     description = models.TextField(
             null=True,
             blank=True,
+            default="Únete a nosotros para experimentar una odontología de calidad, personalizada y avanzada que transformará tu sonrisa y tu confianza. Nuestro equipo dedicado está aquí para cuidar de tu bienestar bucal y crear resultados que te hagan sonreír todos los días.",
             )
     
     whatsapp_number = models.CharField(
         max_length=20,
         null=True,
         blank=True,
-        validators=[validate_numeric_whatsapp_number]
+        validators=[validate_numeric_whatsapp_number],
+        default="526869464883",
         )
     whatsapp_message = models.TextField(null=True, blank=True, default="Hola, me gustaría recibir más información...")
     btn_text = models.CharField(max_length=50, default="Agenda tu cita")
@@ -101,7 +102,7 @@ class CallToAction(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=255)
     header_image = models.ImageField(null=True, blank=True, upload_to="images/services/", default=None)
-    title_tag = models.CharField(max_length=255, default="Civico Dental")
+    title_tag = models.CharField(max_length=255, default="Servicios")
     author = models.ForeignKey(User, related_name='service_author', on_delete=models.CASCADE) # change related_name to be unique
     body = RichTextField(blank=True, null=True)
     post_date = models.DateField(auto_now_add=True)
@@ -110,8 +111,12 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True, related_name='articles')
     tags = models.ManyToManyField(Tag, blank=True)
     calltoaction = models.ForeignKey(CallToAction, on_delete=models.CASCADE, null=True, blank=True, related_name='call2action')
-    calltoaction_is_mainpage_enabled = models.BooleanField(default=True)
+    calltoaction_is_mainpage_enabled = models.BooleanField(default=False)
+    
     post_is_visible = models.BooleanField(default=True)
+
+    call2action = models.ForeignKey(Call2Action, on_delete=models.CASCADE, null=True, blank=True)
+    is_mainpage_enabled = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)
