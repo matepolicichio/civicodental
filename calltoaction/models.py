@@ -25,6 +25,7 @@ class CallToAction(models.Model):
     btn_text = models.CharField(max_length=50, default="Agenda tu cita")
 
     background_image = models.ImageField(null=True, blank=True, upload_to="images/promociones/call2action/", default=None)
+    is_mainpage_enabled = models.BooleanField(default=False)
  
     def __str__(self):
         return self.title

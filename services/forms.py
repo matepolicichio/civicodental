@@ -11,9 +11,8 @@ class PostForm(forms.ModelForm):
                   'body',
                   'category',
                   'tags',
-                  'calltoaction',
-                  'calltoaction_is_mainpage_enabled',
-                  'post_is_visible',)
+                  'call2action',
+                  'is_visible',)
     
         widgets = {
             'header_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
@@ -24,6 +23,5 @@ class PostForm(forms.ModelForm):
             'category': forms.Select(attrs={'class': 'form-control'}),
             'tags': forms.SelectMultiple(attrs={'class': 'form-control'}),
             'calltoaction': forms.Select(attrs={'class': 'form-control'}),
-            'calltoaction_is_mainpage_enabled': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-            'post_is_visible': forms.CheckboxInput(attrs={'class': 'form-check-input'}),            
+            'is_visible': forms.CheckboxInput(attrs={'class': 'form-check-input'}),            
         }

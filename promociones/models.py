@@ -111,10 +111,10 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True, related_name='articles')
     tags = models.ManyToManyField(Tag, blank=True)
     calltoaction = models.ForeignKey(CallToAction, on_delete=models.CASCADE, null=True, blank=True)
-    calltoaction_is_mainpage_enabled = models.BooleanField(default=False)
-    post_is_visible = models.BooleanField(default=True)
+    # calltoaction_is_mainpage_enabled = models.BooleanField(default=False)
+    is_visible = models.BooleanField(default=True)
 
-    call2action = models.ForeignKey(Call2Action, on_delete=models.CASCADE, null=True, blank=True, related_name='promo_call2action')
+    call2action = models.ForeignKey(Call2Action, on_delete=models.CASCADE, null=True, blank=True, related_name='promo_call2action', default=None)
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)

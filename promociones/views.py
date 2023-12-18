@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Category, Tag, Page
 from sectionselection.models import SectionSelection
+from calltoaction.models import CallToAction
 from .forms import PostForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponse, HttpResponseRedirect
@@ -20,13 +21,10 @@ def HomeView(request):
         is_visible=True,
         page__template_path=template_path_filter)
     
-    promo_posts = Post.objects.filter(post_is_visible=True).order_by('-post_date')
+    posts = Post.objects.filter(is_visible=True).order_by('-post_date')
     
-    # Filter posts where calltoaction.is_enabled is True
-    posts_with_enabled_calltoaction = promo_posts.filter(calltoaction__isnull=False, calltoaction_is_mainpage_enabled=True)
-
-    # Select a random post from the filtered queryset
-    random_post = choice(posts_with_enabled_calltoaction) if posts_with_enabled_calltoaction.exists() else None
+    enabled_calltoaction = CallToAction.objects.filter(is_mainpage_enabled=True)
+    calltoaction = choice(enabled_calltoaction) if enabled_calltoaction.exists() else None
 
     enabled_promo_page_content = Page.objects.filter(is_enabled=True)
     promo_page_random_content = None
@@ -35,8 +33,8 @@ def HomeView(request):
 
     context = {
         'sections': sections,
-        'promo_posts': promo_posts,
-        'post': random_post,
+        'promo_posts': posts,
+        'calltoaction': calltoaction,
         'promo_page_content': promo_page_random_content,        
     }
 
@@ -66,7 +64,11 @@ def ArticleDetailView(request, pk):
         page__template_path=template_path_filter)
 
     post = get_object_or_404(Post, pk=pk)
-    promo_posts = Post.objects.order_by('-post_date')
+    posts = Post.objects.filter(is_visible=True).order_by('-post_date')
+
+    calltoaction = None
+    if post.call2action:
+        calltoaction = get_object_or_404(CallToAction, id=post.call2action.id)
 
     categories = Category.objects.all()
     category_counts = {category.name: category.articles.count() for category in categories}
@@ -81,7 +83,8 @@ def ArticleDetailView(request, pk):
     context = {
         'sections': sections,
         'post': post,
-        'promo_posts': promo_posts,
+        'promo_posts': posts,
+        'calltoaction': calltoaction,
         'category_counts': category_counts,
         'tags': tags,
         'promo_page_content': promo_page_random_content,
