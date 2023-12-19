@@ -19,7 +19,7 @@ class CallToAction(models.Model):
         null=True,
         blank=True,
         validators=[validate_numeric_whatsapp_number],
-        default="526869464883",
+        default="5216869464883"
         )
     whatsapp_message = models.TextField(null=True, blank=True, default="Hola, me gustaría recibir más información...")
     btn_text = models.CharField(max_length=50, default="Agenda tu cita")

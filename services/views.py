@@ -21,7 +21,7 @@ def HomeView(request):
         is_visible=True,
         page__template_path=template_path_filter)
     
-    posts = Post.objects.filter(is_visible=True).order_by('-post_date')
+    posts = Post.objects.filter(is_visible=True).order_by('sort_order')
     
     enabled_calltoaction = CallToAction.objects.filter(is_mainpage_enabled=True)
     calltoaction = choice(enabled_calltoaction) if enabled_calltoaction.exists() else None
