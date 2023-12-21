@@ -26,8 +26,8 @@ SECRET_KEY = 'django-insecure-5e6jkh*!jp^s262aj=y#f8ty7wefaa&1s%4u)7r#&u_#t)1%y(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'civico.ingenios.com.ar']
-CSRF_TRUSTED_ORIGINS = ['https://civico.ingenios.com.ar']
+ALLOWED_HOSTS = ['127.0.0.1', 'civico.ingenios.com.ar', 'civicodentalcaremexicali.com']
+CSRF_TRUSTED_ORIGINS = ['https://civico.ingenios.com.ar', 'http://civicodentalcaremexicali.com']
 
 # ALLOWED_HOSTS = ['127.0.0.1', 'civicodentalcaremexicali.com']
 # CSRF_TRUSTED_ORIGINS = ['https://civicodentalcaremexicali.com']
