@@ -3,6 +3,7 @@ from .forms import ContactForm
 from promociones.models import Post as PromoPost
 from promociones.models import Page as PromoPage
 from sectionselection.models import SectionEnabled
+from hero.models import Hero
 from calltoaction.models import CallToAction
 from services.models import Post as ServicePost
 from services.models import Page as ServicePage
@@ -25,6 +26,9 @@ def index(request):
     enabled_calltoaction = CallToAction.objects.filter(is_mainpage_enabled=True)
     calltoaction = choice(enabled_calltoaction) if enabled_calltoaction.exists() else None
 
+    enabled_hero = Hero.objects.filter(is_enabled=True)
+    hero = choice(enabled_hero) if enabled_hero.exists() else None
+
     enabled_promo_page_content = PromoPage.objects.filter(is_enabled=True)
     promo_page_random_content = None
     if enabled_promo_page_content.exists():
@@ -45,6 +49,7 @@ def index(request):
 
     context = {
         'sections': sections,
+        'hero': hero,
         'promo_posts': promo_posts,
         'service_posts': service_posts,
         'calltoaction': calltoaction,

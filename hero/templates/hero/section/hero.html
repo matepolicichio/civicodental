@@ -1,0 +1,30 @@
+{% load static %}
+
+{% if hero %}
+<section id="{{ section_selection.section.html_id }}" class="hero">
+  
+  {% if hero.background_image %}
+  <img src="{{ hero.background_image.url }}" alt="...">
+  {% else %}
+  <img src="../../static/civico/img/civico_27.JPG" alt="" data-aos="fade-in">
+  {% endif %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10">
+        <h2 data-aos="fade-up" data-aos-delay="100">{{ hero.title }}</h2>
+        <p data-aos="fade-up" data-aos-delay="200">{{ hero.description | safe }}</p>
+      </div>
+
+      {% if hero.is_form_enabled %}
+      <div class="col-lg-5">
+        <form action="#" class="sign-up-form d-flex" data-aos="fade-up" data-aos-delay="300">
+          <input type="text" class="form-control" placeholder="{{ hero.form_placeholder }}">
+          <input type="submit" class="btn btn-primary" value="{{ hero.form_value }}">
+        </form>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}

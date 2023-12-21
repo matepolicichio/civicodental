@@ -3,15 +3,15 @@ from django.db import models
 class SectionEnabled(models.Model):
     SECTION_CHOICES = [
         ('civico/section/about.html', 'main - nosotros'),
-        ('calltoaction/section/call2action.html', 'calltoaction - llámanos'),
         ('civico/section/contact.html', 'main - contacto'),
         ('civico/section/faq.html', 'main - preguntas frecuentes'),
         ('civico/section/features.html', 'main - distintivos'),
-        ('civico/section/hero.html', 'main - hero'),
         ('civico/section/portfolio.html', 'main - experiencia'),
         ('civico/section/stats.html', 'main - estadísticas'),
         ('civico/section/team.html', 'main - equipo'),
         ('civico/section/testimonials.html', 'main - testimonios'),
+        ('hero/section/hero.html', 'hero'),
+        ('calltoaction/section/call2action.html', 'calltoaction'),
         ('promociones/section/posts.html', 'promociones - listado'),
         ('services/section/posts.html', 'servicios - listado'),
     ]
