@@ -39,13 +39,6 @@ def index(request):
     if enabled_service_page_content.exists():
         service_page_random_content = random.choice(enabled_service_page_content)
 
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(request, 'civico/index.html',{'sent_message': True})
-    else:
-        form = ContactForm()
 
     context = {
         'sections': sections,
@@ -55,9 +48,19 @@ def index(request):
         'calltoaction': calltoaction,
         'promo_page_content': promo_page_random_content,
         'service_page_content': service_page_random_content,        
-        'form': form,
     }
 
     template_name = 'civico/index.html'
+
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            context['sent_message'] = True
+            return render(request, template_name, context)
+    else:
+        form = ContactForm()
+    
+    context['form'] = form
 
     return render(request, template_name, context)
