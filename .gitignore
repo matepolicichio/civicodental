@@ -1,11 +1,10 @@
-# Ignore Python cache folders
 __pycache__/
-
-# Ignore all files in the migrations directory except for __init__.py
 */migrations/*
 !*/migrations/__init__.py
-
 /media/
-
 civico/templates/civico/section/promotions22.html
 civico/templates/civico/section/services22.html
+civicodental/settings.py
+civicodental/settings copy.txt
+civico/templates/civico/section/hero22.html
+civicodental/settings copy.py
